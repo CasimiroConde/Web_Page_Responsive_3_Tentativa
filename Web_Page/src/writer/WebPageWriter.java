@@ -94,7 +94,7 @@ public class WebPageWriter {
 		StringBuffer sb = new StringBuffer();
 		sb.append("<div>");
 		String nomeArquivo = solucao.pegaUnidadeSolucaoIndice(indice).geraNomeFonte(modelo.pegaComponenteIndice(indice));
-		sb.append("<img src='C:/Users/Casimiro/Documents/Responsive/Responsive_Hill_climbing/componentes_food_sense/"+ nomeArquivo + ".PNG'>");	
+		sb.append("<img src='C:/Users/Casimiro/git/Web_Responsive/Web_Page/componentes_food_sense/"+ nomeArquivo + ".PNG'>");	
 		sb.append("</div>");
 		return sb;
 	}
@@ -122,7 +122,7 @@ public class WebPageWriter {
 	 */
 	private static void geraArquivoHtml(StringBuilder buffer)
 			throws IOException {
-		FileWriter fstream = new FileWriter("C:/Users/Casimiro/Documents/Responsive_Web_Page/dados_saida/MyHtml.html");
+		FileWriter fstream = new FileWriter("C:/Users/Casimiro/git/Web_Responsive/Web_Page/dados_saida/MyHtml.html");
 	    out = new BufferedWriter(fstream);
 	    out.write(buffer.toString());
 	    out.close();
