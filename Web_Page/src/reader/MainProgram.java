@@ -4,6 +4,7 @@ import hillClimbing.HillClimbing;
 
 import java.io.IOException;
 
+import ordenacao.Ordenacao;
 import writer.WebPageWriter;
 import classes.Modelo;
 import classes.Relacao;
@@ -30,9 +31,13 @@ public class MainProgram {
 		for (Relacao relac : modelo.getRelacoes())
 			relac.print();*/
 		
-		HillClimbing testeHillClimbing = new HillClimbing();
-		testeHillClimbing.executa(modelo);
-		WebPageWriter.geraPaginaWeb(testeHillClimbing.getSolucao(), modelo);
+		Ordenacao ordenacao = new Ordenacao(modelo);
+
+		ordenacao.executaAbove();
+		
+		//HillClimbing testeHillClimbing = new HillClimbing();
+		//testeHillClimbing.executa(modelo);
+		//WebPageWriter.geraPaginaWeb(testeHillClimbing.getSolucao(), modelo);
 
 		System.out.println("FIM");
 	}

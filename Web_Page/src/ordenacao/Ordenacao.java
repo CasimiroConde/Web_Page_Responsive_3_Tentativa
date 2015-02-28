@@ -11,23 +11,31 @@ public @Data class Ordenacao {
 	 
 	
 	private ArrayList<Dependencias> dependencias;
-	private ArrayList<Integer> listaOrdenadaUnder;
+	private ArrayList<Integer> listaOrdenadaAbove;
 	private ArrayList<Integer> listaOrdenadaRight;
 	private ArrayList<UnidadeOrdenacao> listaNaoOrdenada;
 	
 	public Ordenacao(){
-		dependencias = null;
-		listaNaoOrdenada = null;
-		listaOrdenadaRight = null;
-		listaOrdenadaUnder = null;
+		dependencias = new ArrayList<Dependencias>();
+		listaNaoOrdenada = new ArrayList<UnidadeOrdenacao>();
+		listaOrdenadaRight = new ArrayList<Integer>();
+		listaOrdenadaAbove = new ArrayList<Integer>();
 	}
 	
 	
 	public Ordenacao(Modelo modelo){
 		dependencias = Dependencias.geraDependencia(modelo);
 		listaNaoOrdenada = geraListaNaoOrdenada(modelo);
-		listaOrdenadaRight = null;
-		listaOrdenadaUnder = null;
+		listaOrdenadaRight = new ArrayList<Integer>();
+		listaOrdenadaAbove = new ArrayList<Integer>();
+	}
+	
+	public void adicionaDependencia(Dependencias dep){
+		this.dependencias.add(dep);
+	}
+	
+	public void adicionaListaNaoOrdenada(UnidadeOrdenacao uni){
+		this.listaNaoOrdenada.add(uni);
 	}
 	
 	public ArrayList<UnidadeOrdenacao> geraListaNaoOrdenada(Modelo modelo){
@@ -41,9 +49,9 @@ public @Data class Ordenacao {
 	}
 	
 	
-	public void executaUnder (){
+	public void executaAbove (){
 		for(UnidadeOrdenacao n : this.getListaNaoOrdenada()){
-				this.visita(n, this.dependencias, Direcao.UNDER, this.listaOrdenadaUnder);
+				this.visita(n, this.dependencias, Direcao.ABOVE, this.listaOrdenadaAbove);
 		}		
 	}
 	
@@ -58,11 +66,13 @@ public @Data class Ordenacao {
 	private void visita(UnidadeOrdenacao no, ArrayList<Dependencias> dependencias, Direcao direcao, ArrayList<Integer> listaOrdenada) {
 		if(!no.isVisitado()){
 			no.setVisitado(true);
+			listaOrdenada.add(no.getIndice());
 			for(Dependencias d : dependencias){
-				if(d.getA() == no.getIndice()){
-					visita(pegaNo(d.getB()), dependencias, direcao, listaOrdenada);
-					listaOrdenada.add(no.getIndice());
-				}	
+				if(d.getDirecao().equals(direcao)){
+					if(d.getA() == no.getIndice()){
+						visita(pegaNo(d.getB()), dependencias, direcao, listaOrdenada);
+					}
+				}
 			}
 		}
 	}
