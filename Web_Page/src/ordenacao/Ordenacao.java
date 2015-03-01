@@ -34,6 +34,12 @@ public @Data class Ordenacao {
 		this.dependencias.add(dep);
 	}
 	
+	public void setListaNaoOrdenadaFalse(){
+		for(UnidadeOrdenacao u : this.listaNaoOrdenada){
+			u.setVisitado(false);
+		}
+	}
+	
 	public void adicionaListaNaoOrdenada(UnidadeOrdenacao uni){
 		this.listaNaoOrdenada.add(uni);
 	}
@@ -50,12 +56,14 @@ public @Data class Ordenacao {
 	
 	
 	public void executaAbove (){
+		this.setListaNaoOrdenadaFalse();
 		for(UnidadeOrdenacao n : this.getListaNaoOrdenada()){
 				this.visita(n, this.dependencias, Direcao.ABOVE, this.listaOrdenadaAbove);
 		}		
 	}
 	
 	public void executaRight (){
+		this.setListaNaoOrdenadaFalse();
 		for(UnidadeOrdenacao n : this.getListaNaoOrdenada()){
 			if(!n.isVisitado())
 				this.visita(n, this.dependencias, Direcao.RIGHT, this.listaOrdenadaRight);

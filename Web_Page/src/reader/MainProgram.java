@@ -33,7 +33,7 @@ public class MainProgram {
 		
 		Ordenacao ordenacao = new Ordenacao(modelo);
 
-		ordenacao.executaAbove();
+		ordenacao.executaRight();
 		
 		//HillClimbing testeHillClimbing = new HillClimbing();
 		//testeHillClimbing.executa(modelo);
