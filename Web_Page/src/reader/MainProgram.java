@@ -20,7 +20,7 @@ public class MainProgram {
 	 */
 	public static void main(String[] args) throws IOException {
 		Reader reader = new Reader();
-		Modelo modelo = reader.execute("C:/Users/Casimiro/Documents/Casimiro Conde/Aulas/Mestrado/Estudo Dirigido 2/Disertação Responsiva/Arquivos/tudo.txt");
+		Modelo modelo = reader.execute("C:/Users/Casimiro/git/Web_responsive/Web_Page/Arquivos/tudo.txt");
 
 		/*for (Configuracao config : modelo.getConfiguracoes())
 			config.print();
@@ -31,13 +31,13 @@ public class MainProgram {
 		for (Relacao relac : modelo.getRelacoes())
 			relac.print();*/
 		
-		Ordenacao ordenacao = new Ordenacao(modelo);
+		/*Ordenacao ordenacao = new Ordenacao(modelo);
 
 		ordenacao.executaRight();
-		
-		//HillClimbing testeHillClimbing = new HillClimbing();
-		//testeHillClimbing.executa(modelo);
-		//WebPageWriter.geraPaginaWeb(testeHillClimbing.getSolucao(), modelo);
+*/		
+		HillClimbing testeHillClimbing = new HillClimbing();
+		testeHillClimbing.executa(modelo);
+		WebPageWriter.geraPaginaWeb(testeHillClimbing.getSolucao(), modelo);
 
 		System.out.println("FIM");
 	}

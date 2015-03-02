@@ -1,0 +1,86 @@
+#
+# ID; Tipo; largura; altura; coeficiente de informação
+#
+C; branding; 120; 120; 100
+C; box menu; 160; 32; 100
+C; box menu; 116; 61; 100
+C; box menu; 74; 33; 60
+C; box menu; 80; 50; 60
+C; slide; 896; 446; 100
+C; slide; 712; 446; 90
+C; slide; 500; 248; 70
+C; feature; 224; 85; 100
+C; feature; 178; 35; 50
+C; feature; 0; 0; 0
+C; newsletter; 896; 51; 100
+C; newsletter; 712; 51; 80
+C; newsletter; 480; 107; 70
+C; newsletter; 320; 122; 60
+C; article; 206; 120; 100
+C; article; 160; 140; 100
+C; article; 216; 100; 100
+C; article; 280; 80; 100
+C; social master; 160; 57; 100
+C; social master; 0; 0; 0
+C; footer; 32; 92; 100
+
+#
+# Componente; Tipo
+#
+I; branding; branding
+I; t-tastemakers; box menu
+I; t-blog; box menu
+I; t-list; box menu
+I; t-contribute; box menu
+I; t-about; box menu
+I; slide; slide
+I; feature1; feature
+I; feature2; feature
+I; feature3; feature
+I; feature4; feature
+I; newsletter; newsletter
+I; article1; article
+I; article2; article
+I; article3; article
+I; article4; article
+I; twitter_master; social master
+I; facebook_master; social master
+I; footer; footer
+
+#
+# Componente 1; Componente 2; Tipo Relacao; Relacao
+#
+
+R; branding; t-tastemakers; position; (above, right) 
+R; t-tastemakers; t-blog; same size; 
+R; t-blog; t-list; same size; 
+R; t-list; t-contribute; same size; 
+R; t-contribute; t-about; same size; 
+R; t-tastemakers; t-blog; position; (above, right)
+R; t-blog; t-list; position; (above, right)
+R; t-list; t-contribute; position; (above, right)
+R; t-contribute; t-about; position; (above, right)
+R; slide; newsletter; position; above
+R; feature1; feature2; same size; 
+R; feature2; feature3; same size; 
+R; feature3; feature4; same size; 
+R; feature1; feature2; position; (above, right)
+R; feature2; feature3; position; (above, right)
+R; feature3; feature4; position; (above, right)
+R; article1; article2; same size; 
+R; article2; article3; same size; 
+R; article3; article4; same size; 
+R; article1; article2; position; (above, right)
+R; article2; article3; position; (above, right)
+R; article3; article4; position; (above, right)
+R; newsletter; article1; position; above
+R; newsletter; article2; position; above
+R; newsletter; article3; position; above
+R; newsletter; article4; position; above
+R; twitter_master; facebook_master; same size; 
+R; twitter_master; facebook_master; position; above
+R; twitter_master; facebook_master; position; right
+R; article1; footer; position; above
+R; article2; footer; position; above
+R; article3; footer; position; above
+R; article4; footer; position; above

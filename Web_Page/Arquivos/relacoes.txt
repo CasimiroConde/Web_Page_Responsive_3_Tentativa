@@ -1,0 +1,33 @@
+Componente 1; Componente 2; Tipo Relacao; Relacao
+t-tastemaker; t-blog; same size; 
+t-blog; t-vendor; same size; 
+t-vendor; t-contribute; same size; 
+t-contribute; t-about; same size; 
+t-tastemaker; t-blog; position; (above, right)
+t-blog; t-vendor; position; (above, right)
+t-vendor; t-contribute; position; (above, right)
+t-contribute; t-about; position; (above, right)
+slide; newsletter; position; above
+feature1; feature2; same size; 
+feature2; feature3; same size; 
+feature3; feature4; same size; 
+feature1; feature2; position; (above, right)
+feature2; feature3; position; (above, right)
+feature3; feature4; position; (above, right)
+article1; article2; same size; 
+article2; article3; same size; 
+article3; article4; same size; 
+article1; article2; position; (above, right)
+article2; article3; position; (above, right)
+article3; article4; position; (above, right)
+newsletter; article1; position; above
+newsletter; article2; position; above
+newsletter; article3; position; above
+newsletter; article4; position; above
+twitter master; facebook master; same size; 
+twitter master; facebook master; position; above
+twitter master; facebook master; position; right
+article1; footer; position; above
+article2; footer; position; above
+article3; footer; position; above
+article4; footer; position; above

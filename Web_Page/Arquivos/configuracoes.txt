@@ -1,0 +1,23 @@
+ID; Tipo; largura; altura; coeficiente de informação
+1; branding; 120px; 120px; 100%
+2; box menu; 160px; 32px; 100%
+2; box menu; 116px; 61px; 100%
+2; box menu; 74px; 33px; 60%
+2; box menu; 80px; 50px; 60%
+3; slide; 896px; 446px; 100%
+3; slide; 712px; 446px; 90%
+3; slide; 500px; 248px; 70%
+4; feature; 224px; 85px; 100%
+4; feature; 178px; 35px; 50%
+4; feature; 0px; 0px; 0%
+5; newsletter; 896px; 51px; 100%
+5; newsletter; 712px; 51px; 80%
+5; newsletter; 480px; 107px; 70%
+5; newsletter; 320px; 122px; 60%
+6; article; 206px; float; 100%
+6; article; 160px; float; 100%
+6; article; 216px; float; 100%
+6; article; 280px; float; 100%
+7; social master; 160px; 57px; 100%
+7; social master; 0px; 0px; 0%
+8; footer; float; 92px; 100%
