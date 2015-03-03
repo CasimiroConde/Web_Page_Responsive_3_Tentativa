@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import ordenacao.Ordenacao;
 import classes.Modelo;
 import enums.Direcao;
 import enums.TipoRelacao;
@@ -36,8 +37,17 @@ public class Validacao {
 	 * @return
 	 */
 	public static boolean executa(Solucao solucao, double larguraTela, Modelo modelo, boolean construcaoCompleta){
-		return (validaLargura(solucao.calculaLarguraRealSolucao(), larguraTela) && validaRelacoes(solucao, modelo) && construcaoCompleta);
-
+		if (!validaLargura(solucao.calculaLarguraRealSolucao(), larguraTela)) 
+			return false;
+		
+		if(!validaRelacoes(solucao, modelo))
+			return false;
+					
+		if(!construcaoCompleta)
+			return false;
+		
+		return true;
+			
 	}
 	
 	/**
@@ -69,26 +79,11 @@ public class Validacao {
 				}
 				
 				if(modelo.pegaRelacaoIndice(j).getTipoRelacao() == TipoRelacao.POSITION){
-					if(validaRelacaoPosition(solucao.pegaUnidadeSolucaoIndice(i), solucao.pegaUnidadeSolucaoIndice(modelo.pegaIndiceComponente(modelo.pegaRelacaoIndice(j).getComp_2())), modelo.pegaRelacaoIndice(j).getDirecao(), solucao, modelo)){
-					
+					if(validaRelacaoPosition(solucao, modelo)){
+						return false;
 					}
 				}
 			}
-		/*	
-			for(int j = 0   ; j < modelo.pegaNumeroRelacoes() ; j++){
-				if(modelo.pegaRelacaoIndice(j).getComp_1() == u.getComponente()){
-					UnidadeSolucao u2 = solucao.pegaUnidadeSolucaoNome(modelo.pegaRelacaoIndice(j).getComp_2().getNome()).copy();
-					if(modelo.pegaRelacaoIndice(j).getTipoRelacao() == TipoRelacao.POSITION){
-						ajustaRelacaoPosition(solucao.pegaUnidadeSolucaoIndice(i), solucao.pegaUnidadeSolucaoNome(modelo.pegaRelacaoIndice(j).getComp_2().getNome()), modelo.pegaRelacaoIndice(j).getDirecao(), solucao, modelo);
-						//validaRelacoes(solucao, modelo);
-					}
-					if(modelo.pegaRelacaoIndice(j).getTipoRelacao() == TipoRelacao.SIZE){
-						validaRelacaoSize(solucao.pegaUnidadeSolucaoIndice(i), solucao.pegaUnidadeSolucaoNome(modelo.pegaRelacaoIndice(j).getComp_2().getNome()), modelo.pegaRelacaoIndice(j).getDirecao(), solucao);
-						//validaRelacoes(solucao, modelo);
-					}
-				}
-			}
-		}*/
 		}
 		return true;
 	}
@@ -106,8 +101,27 @@ public class Validacao {
 		u.setFatorTamanho(u2.getFatorTamanho());
 	}
 
-	private static boolean validaRelacaoPosition(UnidadeSolucao u,
-			UnidadeSolucao u2, ArrayList<Direcao> direcao, Solucao solucao, Modelo modelo) {
+	private static boolean validaRelacaoPosition(Solucao solucao, Modelo modelo) {
+		Ordenacao ordenacao = new Ordenacao(modelo);
+		ordenacao.executaAbove();
+		
+		for(int i = 0 ; i < ordenacao.getListaOrdenadaAbove().size() ; i ++){
+			for(int j = i + 1 ; j < ordenacao.getListaOrdenadaAbove().size() ; j ++){
+				if(solucao.getMatriz().pegaLinha(ordenacao.getListaOrdenadaAbove().indexOf(i)) < solucao.getMatriz().pegaLinha(ordenacao.getListaOrdenadaAbove().indexOf(j)))
+					return false;
+			}
+		}
+		
+		ordenacao.executaRight();
+		
+		for(int i = 0 ; i < ordenacao.getListaOrdenadaRight().size() ; i ++){
+			for(int j = i + 1 ; j < ordenacao.getListaOrdenadaRight().size() ; j ++){
+				if(solucao.getMatriz().pegaColuna(ordenacao.getListaOrdenadaRight().indexOf(i)) < solucao.getMatriz().pegaColuna(ordenacao.getListaOrdenadaRight().indexOf(j)))
+					return false;
+			}
+		}
+		
+		
 		return true;
 	}
 	

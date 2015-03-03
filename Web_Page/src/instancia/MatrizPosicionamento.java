@@ -220,4 +220,25 @@ public class MatrizPosicionamento
 	public int getCelula(int linha, int coluna) {
 		return componentes[linha][coluna];
 	}
+	
+	public int pegaLinha(int indice){
+		for(int i = 0 ; i < this.getLinhas() ; i++){
+			for(int j = 0 ; j < this.getColunas(); j++){
+				if(indice == getCelula(i, j))
+					return i;
+			}
+		}
+		return -1;
+	}
+	
+	public int pegaColuna(int indice){
+		for(int i = 0 ; i < this.getLinhas() ; i++){
+			for(int j = 0 ; j < this.getColunas(); j++){
+				if(indice == getCelula(i, j))
+					return j;
+			}
+		}
+		return -1;
+	}
+	
 }

@@ -30,11 +30,7 @@ public class MainProgram {
 
 		for (Relacao relac : modelo.getRelacoes())
 			relac.print();*/
-		
-		/*Ordenacao ordenacao = new Ordenacao(modelo);
-
-		ordenacao.executaRight();
-*/		
+			
 		HillClimbing testeHillClimbing = new HillClimbing();
 		testeHillClimbing.executa(modelo);
 		WebPageWriter.geraPaginaWeb(testeHillClimbing.getSolucao(), modelo);
