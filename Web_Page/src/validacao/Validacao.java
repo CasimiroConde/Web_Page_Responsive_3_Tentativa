@@ -1,15 +1,10 @@
 package validacao;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import ordenacao.Ordenacao;
-import classes.Modelo;
-import enums.Direcao;
-import enums.TipoRelacao;
 import instancia.Solucao;
 import instancia.UnidadeSolucao;
+import ordenacao.Ordenacao;
+import classes.Modelo;
+import enums.TipoRelacao;
 
 /**
  * @author Casimiro

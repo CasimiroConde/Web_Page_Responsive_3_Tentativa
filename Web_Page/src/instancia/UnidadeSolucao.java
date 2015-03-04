@@ -1,7 +1,7 @@
 package instancia;
 
-import classes.Componente;
 import lombok.Data;
+import classes.Componente;
 
 public @Data class UnidadeSolucao {
 

@@ -3,9 +3,7 @@ package ordenacao;
 import java.util.ArrayList;
 
 import lombok.Data;
-import classes.Componente;
 import classes.Modelo;
-import classes.Relacao;
 import enums.Direcao;
 
 public @Data class Dependencias {

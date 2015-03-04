@@ -1,10 +1,11 @@
 package writer;
 
+import instancia.Solucao;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import instancia.Solucao;
 import classes.Modelo;
 
 /**
@@ -122,7 +123,7 @@ public class WebPageWriter {
 	 */
 	private static void geraArquivoHtml(StringBuilder buffer)
 			throws IOException {
-		FileWriter fstream = new FileWriter("C:/Users/Casimiro/git/Web_Responsive/Web_Page/dados_saida/MyHtml.html");
+		FileWriter fstream = new FileWriter("/dados_saida/MyHtml.html");
 	    out = new BufferedWriter(fstream);
 	    out.write(buffer.toString());
 	    out.close();
@@ -142,7 +143,7 @@ public class WebPageWriter {
 	 * @param nomeFonte
 	 */
 	private static void geraImagem(StringBuilder buffer, String nomeFonte) {
-		buffer.append("<img src='C:/Users/Casimiro/Documents/Responsive/Responsive_Hill_climbing/componentes_food_sense/"+ nomeFonte + ".PNG'>");	
+		buffer.append("<img src='/componentes_food_sense/"+ nomeFonte + ".PNG'>");	
 	}
 
 	/**

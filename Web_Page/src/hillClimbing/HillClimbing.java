@@ -1,7 +1,7 @@
 package hillClimbing;
 
-import lombok.Data;
 import instancia.Solucao;
+import lombok.Data;
 import classes.Modelo;
 
 public @Data class HillClimbing {

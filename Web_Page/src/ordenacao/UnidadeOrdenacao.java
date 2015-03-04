@@ -1,6 +1,5 @@
 package ordenacao;
 
-import classes.Modelo;
 import lombok.Data;
 
 public @Data class UnidadeOrdenacao {

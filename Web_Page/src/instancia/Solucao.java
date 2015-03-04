@@ -1,11 +1,7 @@
 package instancia;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import validacao.Validacao;
 import lombok.Data;
-import classes.Componente;
+import validacao.Validacao;
 import classes.Modelo;
 
 /*    1/8 | 2/8 | 3/8

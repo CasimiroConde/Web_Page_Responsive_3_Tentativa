@@ -4,10 +4,8 @@ import hillClimbing.HillClimbing;
 
 import java.io.IOException;
 
-import ordenacao.Ordenacao;
 import writer.WebPageWriter;
 import classes.Modelo;
-import classes.Relacao;
 
 public class MainProgram {
 
@@ -20,7 +18,7 @@ public class MainProgram {
 	 */
 	public static void main(String[] args) throws IOException {
 		Reader reader = new Reader();
-		Modelo modelo = reader.execute("C:/Users/Casimiro/git/Web_responsive/Web_Page/Arquivos/tudo.txt");
+		Modelo modelo = reader.execute("Arquivos//tudo.txt");
 
 		/*for (Configuracao config : modelo.getConfiguracoes())
 			config.print();

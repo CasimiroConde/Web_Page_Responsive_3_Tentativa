@@ -1,7 +1,7 @@
 package validacao;
 
-import static org.junit.Assert.*;
-import validacao.Validacao;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 public class TestValidacao {
