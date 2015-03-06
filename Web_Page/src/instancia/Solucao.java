@@ -12,7 +12,7 @@ import classes.Modelo;
 public @Data class Solucao{
 
 	private static double FATOR = 0.5; 
-	private static double LARGURATELA = 724;
+	private static double LARGURATELA = 725;
 
 	//InfoTela informacaoTela;
 	private Modelo modelo;

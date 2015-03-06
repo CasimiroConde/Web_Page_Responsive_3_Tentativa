@@ -19,7 +19,7 @@ public class PrinterMatrizPosicionamento
 				if(matriz.getCelula(i, j) != -1){
 					//buffer.append("<div style='display: table-cell'>");
 					String nomeArquivo = solucao.pegaUnidadeSolucaoIndice(matriz.getCelula(i, j)).geraNomeFonte(modelo.pegaComponenteIndice(matriz.getCelula(i, j)));
-					buffer.append("<img src='C:/Users/Casimiro/git/Web_Responsive/Web_Page/componentes_food_sense/"+ nomeArquivo + ".PNG'>");	
+					buffer.append("<img src='C:/Users/Casimiro/git/WebResponsive/Web_Page/componentes_food_sense/"+ nomeArquivo + ".PNG'>");	
 					//buffer.append("</div>");
 				}
 			}

@@ -3,13 +3,9 @@
 #
 C; branding; 120; 120; 100
 C; box menu; 640; 32; 100
-C; box menu; 464; 61; 100
-C; box menu; 296; 33; 60
-C; box menu; 320; 50; 60
 C; box menu; 160; 128; 100
 C; box menu; 116; 244; 100
 C; box menu; 74; 132; 60
-C; box menu; 80; 200; 60
 C; slide; 896; 446; 100
 C; slide; 712; 446; 90
 C; slide; 500; 248; 70
@@ -51,7 +47,7 @@ I; footer; footer
 # Componente 1; Componente 2; Tipo Relacao; Relacao
 #
 
-R; branding; t-menu; position; (above, right) 
+R; branding; t-menu; position; (above, right, under) 
 R; slide; newsletter; position; above
 R; feature1; feature2; same size; 
 R; feature2; feature3; same size; 
