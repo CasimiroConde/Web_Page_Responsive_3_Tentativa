@@ -98,23 +98,16 @@ public class Validacao {
 
 	private static boolean validaRelacaoPosition(Solucao solucao, Modelo modelo) {
 		Ordenacao ordenacao = new Ordenacao(modelo);
-		ordenacao.executaAbove();
+		ordenacao.executa();
 		
-		for(int i = 0 ; i < ordenacao.getListaOrdenadaAbove().size() ; i ++){
-			for(int j = i + 1 ; j < ordenacao.getListaOrdenadaAbove().size() ; j ++){
-				if(solucao.getMatriz().pegaLinha(ordenacao.getListaOrdenadaAbove().indexOf(i)) < solucao.getMatriz().pegaLinha(ordenacao.getListaOrdenadaAbove().indexOf(j)))
+		for(int i = 0 ; i < ordenacao.getListaOrdenada().size() ; i ++){
+			for(int j = i + 1 ; j < ordenacao.getListaOrdenada().size() ; j ++){
+				if(solucao.getMatriz().pegaLinha(ordenacao.getListaOrdenada().indexOf(i)) < solucao.getMatriz().pegaLinha(ordenacao.getListaOrdenada().indexOf(j)))
 					return false;
 			}
 		}
 		
-		ordenacao.executaRight();
-		
-		for(int i = 0 ; i < ordenacao.getListaOrdenadaRight().size() ; i ++){
-			for(int j = i + 1 ; j < ordenacao.getListaOrdenadaRight().size() ; j ++){
-				if(solucao.getMatriz().pegaColuna(ordenacao.getListaOrdenadaRight().indexOf(i)) < solucao.getMatriz().pegaColuna(ordenacao.getListaOrdenadaRight().indexOf(j)))
-					return false;
-			}
-		}
+
 		
 		
 		return true;
