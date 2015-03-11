@@ -59,7 +59,7 @@ public @Data class HillClimbing {
 
 
 		//Busca comfiguracao semelhante
-		solucaoTeste.vizinhoBuscaConfiguracao(numeroComponente);
+		//solucaoTeste.vizinhoBuscaConfiguracao(numeroComponente);
 
 		if(solucaoTeste.fitnessFunction() < solucao.fitnessFunction())
 			return true;

@@ -29,7 +29,7 @@ public @Data class Solucao{
 		this.solucao = new UnidadeSolucao[modelo.pegaNumeroComponentes()];
 
 		for (int i = 0; i < modelo.pegaNumeroComponentes(); i++) {
-			this.solucao[i] = new UnidadeSolucao();
+			this.solucao[i] = new UnidadeSolucao(modelo.pegaComponenteIndice(i));
 		}
 		matriz = ConstrutorMatrizPosicionamento.executa(this, modelo);
 	}
@@ -216,9 +216,6 @@ public @Data class Solucao{
 	 * Busca uma nova configuração para a Unidade Solução do indice i.
 	 * @param i
 	 */
-	public void vizinhoBuscaConfiguracao(int i) {
-		this.pegaUnidadeSolucaoIndice(i).geraFatorTamanho();
-	}
 
 	public Solucao copy() {
 		Solucao copied = new Solucao(modelo);
