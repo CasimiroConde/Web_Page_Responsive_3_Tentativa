@@ -16,31 +16,31 @@ public class ConstrutorMatrizPosicionamento {
 			
 			double fatorPosicao = solucao.pegaUnidadeSolucaoIndice(i).getFatorPosicao();
 			
-			if (fatorPosicao < 0.125)
+			if (fatorPosicao == 1)
 			{
 				ok = m.adicionaNoroeste(i);
 			}
-			else if (fatorPosicao < 0.25)
+			else if (fatorPosicao == 2)
 			{
 				ok = m.adicionaNorte(i);
 			}
-			else if (fatorPosicao < 0.375)
+			else if (fatorPosicao == 3)
 			{
 				ok = m.adicionaNordeste(i);
 			}
-			else if (fatorPosicao < 0.5)
+			else if (fatorPosicao == 4)
 			{
 				ok = m.adicionaOeste(i);
 			}
-			else if (fatorPosicao < 0.625)
+			else if (fatorPosicao == 5)
 			{
 				ok = m.adicionaLeste(i);
 			}
-			else if (fatorPosicao < 0.75)
+			else if (fatorPosicao == 6)
 			{
 				ok = m.adicionaSudoeste(i);
 			}
-			else if (fatorPosicao < 0.875)
+			else if (fatorPosicao == 7)
 			{
 				ok = m.adicionaSul(i);
 			}
