@@ -22,8 +22,11 @@ public class MatrizPosicionamento
 		if (ultimaPosicaoY == 0)
 			aumentaCima();
 
-		if (componentes[ultimaPosicaoY-1][ultimaPosicaoX-1] >= 0)
+		if (componentes[ultimaPosicaoY-1][ultimaPosicaoX-1] >= 0){
+			ultimaPosicaoX = ultimaPosicaoX-1;
+			ultimaPosicaoY = ultimaPosicaoY-1;
 			return false;
+		}
 		
 		componentes[ultimaPosicaoY-1][ultimaPosicaoX-1] = indice;
 		ultimaPosicaoX = ultimaPosicaoX-1;
@@ -36,8 +39,10 @@ public class MatrizPosicionamento
 		if (ultimaPosicaoY == 0)
 			aumentaCima();
 
-		if (componentes[ultimaPosicaoY-1][ultimaPosicaoX] >= 0)
+		if (componentes[ultimaPosicaoY-1][ultimaPosicaoX] >= 0){
+			ultimaPosicaoY = ultimaPosicaoY-1;
 			return false;
+		}
 		
 		componentes[ultimaPosicaoY-1][ultimaPosicaoX] = indice;
 		ultimaPosicaoY = ultimaPosicaoY-1;
@@ -54,8 +59,11 @@ public class MatrizPosicionamento
 		if (ultimaPosicaoY == 0)
 			aumentaCima();
 
-		if (componentes[ultimaPosicaoY-1][ultimaPosicaoX+1] >= 0)
+		if (componentes[ultimaPosicaoY-1][ultimaPosicaoX+1] >= 0){
+			ultimaPosicaoX = ultimaPosicaoX+1;
+			ultimaPosicaoY = ultimaPosicaoY-1;
 			return false;
+		}
 		
 		componentes[ultimaPosicaoY-1][ultimaPosicaoX+1] = indice;
 		ultimaPosicaoX = ultimaPosicaoX+1;
@@ -68,8 +76,10 @@ public class MatrizPosicionamento
 		if (ultimaPosicaoX == 0)
 			aumentaEsquerda();
 		
-		if (componentes[ultimaPosicaoY][ultimaPosicaoX-1] >= 0)
+		if (componentes[ultimaPosicaoY][ultimaPosicaoX-1] >= 0){
+			ultimaPosicaoX = ultimaPosicaoX-1;
 			return false;
+		}
 		
 		componentes[ultimaPosicaoY][ultimaPosicaoX-1] = indice;
 		ultimaPosicaoX = ultimaPosicaoX-1;
@@ -83,8 +93,10 @@ public class MatrizPosicionamento
 		if (ultimaPosicaoX == colunas-1)
 			aumentaDireita();
 		
-		if (componentes[ultimaPosicaoY][ultimaPosicaoX+1] >= 0)
+		if (componentes[ultimaPosicaoY][ultimaPosicaoX+1] >= 0){
+			ultimaPosicaoX = ultimaPosicaoX+1;
 			return false;
+		}
 		
 		componentes[ultimaPosicaoY][ultimaPosicaoX+1] = indice;
 		ultimaPosicaoX = ultimaPosicaoX+1;
@@ -101,8 +113,11 @@ public class MatrizPosicionamento
 		if (ultimaPosicaoY == linhas-1)
 			aumentaBaixo();
 
-		if (componentes[ultimaPosicaoY+1][ultimaPosicaoX-1] >= 0)
+		if (componentes[ultimaPosicaoY+1][ultimaPosicaoX-1] >= 0){
+			ultimaPosicaoX = ultimaPosicaoX-1;
+			ultimaPosicaoY = ultimaPosicaoY+1;
 			return false;
+		}
 		
 		componentes[ultimaPosicaoY+1][ultimaPosicaoX-1] = indice;
 		ultimaPosicaoX = ultimaPosicaoX-1;
@@ -117,8 +132,10 @@ public class MatrizPosicionamento
 		if (ultimaPosicaoY == linhas-1)
 			aumentaBaixo();
 
-		if (componentes[ultimaPosicaoY+1][ultimaPosicaoX] >= 0)
+		if (componentes[ultimaPosicaoY+1][ultimaPosicaoX] >= 0){
+			ultimaPosicaoY = ultimaPosicaoY+1;
 			return false;
+		}
 		
 		componentes[ultimaPosicaoY+1][ultimaPosicaoX] = indice;
 		ultimaPosicaoY = ultimaPosicaoY+1;
@@ -136,8 +153,11 @@ public class MatrizPosicionamento
 		if (ultimaPosicaoY == linhas-1)
 			aumentaBaixo();
 
-		if (componentes[ultimaPosicaoY+1][ultimaPosicaoX+1] >= 0)
+		if (componentes[ultimaPosicaoY+1][ultimaPosicaoX+1] >= 0){
+			ultimaPosicaoX = ultimaPosicaoX+1;
+			ultimaPosicaoY = ultimaPosicaoY+1;
 			return false;
+		}
 		
 		componentes[ultimaPosicaoY+1][ultimaPosicaoX+1] = indice;
 		ultimaPosicaoX = ultimaPosicaoX+1;
@@ -240,5 +260,7 @@ public class MatrizPosicionamento
 		}
 		return -1;
 	}
+
+	
 	
 }

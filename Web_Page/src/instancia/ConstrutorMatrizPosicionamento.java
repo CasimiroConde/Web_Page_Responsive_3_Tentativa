@@ -50,8 +50,8 @@ public class ConstrutorMatrizPosicionamento {
 			}
 			
 			if (!ok){
-				solucao.pegaUnidadeSolucaoIndice(i).geraFatorPosicao();
-				solucao.setConstrucaoCompleta(ok);
+				//solucao.pegaUnidadeSolucaoIndice(i).geraFatorPosicao();
+				//solucao.setConstrucaoCompleta(ok);
 				i--;
 				//return m;
 			}
