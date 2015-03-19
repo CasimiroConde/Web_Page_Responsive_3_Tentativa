@@ -54,35 +54,8 @@ public class WebPageWriter {
 	private static void geraConteudo(Solucao solucao, StringBuilder buffer, Modelo modelo) {
 		
 		buffer.append(PrinterMatrizPosicionamento.executa(solucao.getMatriz(),solucao,modelo));
-		
-		/*		ArrayList<StringBuilder> linhas = new ArrayList<StringBuilder>();
-		StringBuilder b = new StringBuilder();
-		b.append("<div>");
-		linhas.add(b);
-		
-		int j = 0;
-		StringBuffer x = geraLinha(solucao, linhas.get(j), 0, modelo);
-	
-		for(int i = 1 ; i < solucao.tamanhoSolucao(); i++){
-			if (solucao.pegaUnidadeSolucaoIndice(i).getFatorPosicao() > 0.625){
-				StringBuilder c = new StringBuilder();
-				c.append("<div>");
-				linhas.add(c);
-				geraLinha(solucao, linhas.get(j + 1), i, modelo);;
-				j++;
-			}else if ((solucao.pegaUnidadeSolucaoIndice(i).getFatorPosicao() >= 0.5 && solucao.pegaUnidadeSolucaoIndice(i).getFatorPosicao() <= 0.625 ) || j == 0){
-				geraLinha(solucao, linhas.get(j), i, modelo);
-			}else if (solucao.pegaUnidadeSolucaoIndice(i).getFatorPosicao() < 0.5){
-				geraLinha(solucao, linhas.get(j - 1), i, modelo);
-				j--;
-			}
-		}
-			
- 
-		for(StringBuilder sb : linhas)
-			buffer.append(sb);
-*/		
-	    }
+
+    }
 
 	/**
 	 * Função responsável pela geraçã das linhas da página Web.

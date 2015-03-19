@@ -2,8 +2,10 @@ package validacao;
 
 import instancia.Solucao;
 import instancia.UnidadeSolucao;
+import ordenacao.Dependencias;
 import ordenacao.Ordenacao;
 import classes.Modelo;
+import enums.Direcao;
 import enums.TipoRelacao;
 
 /**
@@ -101,15 +103,21 @@ public class Validacao {
 		ordenacao.executa();
 		
 		for(int i = 0 ; i < ordenacao.getListaOrdenada().size() ; i ++){
-			for(int j = i + 1 ; j < ordenacao.getListaOrdenada().size() ; j ++){
-				if(solucao.getMatriz().pegaLinha(ordenacao.getListaOrdenada().indexOf(i)) < solucao.getMatriz().pegaLinha(ordenacao.getListaOrdenada().indexOf(j)))
-					return false;
+			for(Dependencias d : ordenacao.getDependencias()){
+				if(d.getA() == ordenacao.getListaOrdenada().indexOf(i)){
+					if(d.getDirecao() == Direcao.ABOVE){
+						if(solucao.getMatriz().pegaLinha(d.getA()) < solucao.getMatriz().pegaLinha(d.getB())){
+							return false;
+						}
+					}
+					if(d.getDirecao() == Direcao.RIGHT){
+						if(solucao.getMatriz().pegaColuna(d.getA()) < solucao.getMatriz().pegaLinha(d.getB())){
+							return false;
+						}
+					}
+				}
 			}
 		}
-		
-
-		
-		
 		return true;
 	}
 	

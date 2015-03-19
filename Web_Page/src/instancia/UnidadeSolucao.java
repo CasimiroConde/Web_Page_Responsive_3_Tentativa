@@ -16,14 +16,15 @@ public @Data class UnidadeSolucao {
 	 */
 	public UnidadeSolucao(Componente componente) {
 		super();
-		int posicao = (int) (Math.random() * (componente.getConfiguracao().pegaNumeroCaracteristicas() - 0));
+		int tamanho = (int) (Math.random() * (componente.getConfiguracao().pegaNumeroCaracteristicas() - 0));
 		this.fatorPosicao = (int) (Math.random() * ((8 - 0)));
 		
-		if(posicao == componente.getConfiguracao().pegaNumeroCaracteristicas())
-			this.fatorTamanho = posicao -1;
+		if(tamanho == componente.getConfiguracao().pegaNumeroCaracteristicas())
+			this.fatorTamanho = tamanho -1;
 		else
-			this.fatorPosicao = posicao;
-}
+			this.fatorTamanho = tamanho;
+	}
+
 
 	public UnidadeSolucao(int fatorPosicao2, int fatorTamanho2) {
 		this.fatorPosicao = fatorPosicao2;

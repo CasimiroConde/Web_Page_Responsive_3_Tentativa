@@ -1,9 +1,11 @@
 package reader;
 
 import hillClimbing.HillClimbing;
+import instancia.Solucao;
 
 import java.io.IOException;
 
+import montagemEstatica.Montagem;
 import writer.WebPageWriter;
 import classes.Modelo;
 
@@ -29,10 +31,13 @@ public class MainProgram {
 		for (Relacao relac : modelo.getRelacoes())
 			relac.print();*/
 			
-		HillClimbing testeHillClimbing = new HillClimbing();
+		/*HillClimbing testeHillClimbing = new HillClimbing();
 		testeHillClimbing.executa(modelo);
-		WebPageWriter.geraPaginaWeb(testeHillClimbing.getSolucao(), modelo);
-
+		WebPageWriter.geraPaginaWeb(testeHillClimbing.getSolucao(), modelo);*/
+		
+		Solucao solucao = Montagem.montagemUm(modelo);
+		WebPageWriter.geraPaginaWeb(solucao, modelo);
+		
 		System.out.println("FIM");
 	}
 }

@@ -21,7 +21,7 @@ public @Data class Solucao{
 	private MatrizPosicionamento matriz =  new MatrizPosicionamento();
 	private boolean construcaoCompleta;
 	/**
-	 * Construtor de uma Solução Vazia 
+	 * Construtor de uma Solução  
 	 */
 	public Solucao(Modelo modelo){
 		this.modelo = modelo;
