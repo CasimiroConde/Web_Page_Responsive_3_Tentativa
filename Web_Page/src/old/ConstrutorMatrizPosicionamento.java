@@ -1,4 +1,5 @@
-package instancia;
+package old;
+/*package instancia;
 
 import classes.Modelo;
 
@@ -69,4 +70,4 @@ public class ConstrutorMatrizPosicionamento {
 			System.out.println();
 		}
 	}
-}
+}*/

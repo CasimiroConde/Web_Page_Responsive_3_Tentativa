@@ -1,5 +1,6 @@
 package instancia;
 
+import old.MatrizPosicionamento;
 import lombok.Data;
 import validacao.Validacao;
 import classes.Modelo;
@@ -29,9 +30,8 @@ public @Data class Solucao{
 		this.solucao = new UnidadeSolucao[modelo.pegaNumeroComponentes()];
 
 		for (int i = 0; i < modelo.pegaNumeroComponentes(); i++) {
-			this.solucao[i] = new UnidadeSolucao(modelo.pegaComponenteIndice(i));
+			this.solucao[i] = new UnidadeSolucao(modelo.pegaComponenteIndice(i), modelo);
 		}
-		matriz = ConstrutorMatrizPosicionamento.executa(this, modelo);
 	}
 	
 	/** 
@@ -48,7 +48,7 @@ public @Data class Solucao{
 	public int calculaAlturaMaximaSolucao(){
 		int alturaTotal = 0;
 		for(int i = 0 ; i < this.tamanhoSolucao() ; i++ ){
-			alturaTotal += this.pegaUnidadeSolucaoIndice(i).pegaAlturaComponente(modelo.pegaComponenteIndice(i));
+			alturaTotal += this.pegaUnidadeSolucaoIndice(i).pegaAlturaComponente();
 		}
 		return alturaTotal;
 	}
@@ -88,7 +88,7 @@ public @Data class Solucao{
 			alturaTotal += i;
 		}
 		*/
-		return DimensoesMatrizPosicionamento.executaAltura(matriz, this, modelo);
+		return DimensoesPosicionamento.executaAltura(this, modelo);
 	}
 	
 	/** 
@@ -122,7 +122,7 @@ public @Data class Solucao{
 			}
 		}*/
 		
-		return DimensoesMatrizPosicionamento.executaLargura(matriz, this, modelo);
+		return DimensoesPosicionamento.executaLargura(this, modelo);
 	}
 	
 	/**
@@ -198,7 +198,7 @@ public @Data class Solucao{
 	 * @param i
 	 */
 	public void vizinhoSobeLinha(int i) {
-		this.pegaUnidadeSolucaoIndice(i).sobeLinha();		
+		this.pegaUnidadeSolucaoIndice(i).sobeLinha(this.pegaUnidadeSolucaoIndice(i - 1));		
 	}
 
 	/**
@@ -206,7 +206,7 @@ public @Data class Solucao{
 	 * @param i
 	 */
 	public void vizinhoDesceLinha(int i) {
-		this.pegaUnidadeSolucaoIndice(i).desceLinha();
+		this.pegaUnidadeSolucaoIndice(i).desceLinha(this.pegaUnidadeSolucaoIndice(i - 1));
 	}
 			
  // funcão para andar para esquerda
@@ -222,12 +222,37 @@ public @Data class Solucao{
 		
 		for (int i = 0; i < modelo.pegaNumeroComponentes(); i++) {
 			UnidadeSolucao item = this.solucao[i];
-			copied.solucao[i] = new UnidadeSolucao(item.getFatorPosicao(), item.getFatorTamanho());
+			copied.solucao[i] = new UnidadeSolucao(item.getX(), item.getY(), item.getFatorTamanho(), item.getComponente());
 		}
 		return copied;
 	}
-
-	public void mudaFatorPosicaoIndice(int i) {
-		this.pegaUnidadeSolucaoIndice(i).geraFatorPosicao();
+	
+	public void ordenaAltura(){
+		UnidadeSolucao aux = null;
+		
+		for(int i = 0 ; i < this.tamanhoSolucao() ; i++){
+			for(int j = 0 ; j < this.tamanhoSolucao() - 1 ; j++){
+				if(this.pegaUnidadeSolucaoIndice(j).getY() > this.pegaUnidadeSolucaoIndice(j + 1).getY()){
+					aux = this.pegaUnidadeSolucaoIndice(j);
+					this.solucao[j] = this.pegaUnidadeSolucaoIndice(j + 1);
+					this.solucao[j + 1] = aux;
+				}
+			}
+		}
 	}
+
+	public void ordenaLargura() {
+		UnidadeSolucao aux = null;
+		
+		for(int i = 0 ; i < this.tamanhoSolucao() ; i++){
+			for(int j = 0 ; j < this.tamanhoSolucao() - 1 ; j++){
+				if(this.pegaUnidadeSolucaoIndice(j).getX() > this.pegaUnidadeSolucaoIndice(j + 1).getX()){
+					aux = this.pegaUnidadeSolucaoIndice(j);
+					this.solucao[j] = this.pegaUnidadeSolucaoIndice(j + 1);
+					this.solucao[j + 1] = aux;
+				}
+			}
+		}
+	}
+
 }

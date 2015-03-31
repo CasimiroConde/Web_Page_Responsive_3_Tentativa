@@ -1,4 +1,4 @@
-package montagemEstatica;
+/*package montagemEstatica;
 
 import classes.Modelo;
 import instancia.ConstrutorMatrizPosicionamento;
@@ -80,3 +80,4 @@ public class Montagem {
 	}
 	
 }
+*/

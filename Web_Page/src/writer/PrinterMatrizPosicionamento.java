@@ -1,4 +1,4 @@
-package writer;
+/*package writer;
 
 import instancia.MatrizPosicionamento;
 import instancia.Solucao;
@@ -29,4 +29,4 @@ public class PrinterMatrizPosicionamento
 
 		return buffer;
 	}
-}
+}*/

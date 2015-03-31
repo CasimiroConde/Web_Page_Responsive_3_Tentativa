@@ -93,4 +93,24 @@ public class Modelo {
 		return this.relacoes.get(indice);
 	}
 	
+	public int pegaSomaMaximaLargura(){
+		int maxX = 0;
+		
+		for(Componente c : this.componentes){
+			maxX += Integer.parseInt(c.getConfiguracao().pegaCaracteristicaIndice(c.getConfiguracao().pegaNumeroCaracteristicas() - 1).getLargura());
+		}
+		
+		return maxX;
+	}
+	
+	public int pegaSomaMaximaAltura(){
+		int maxY = 0;
+		
+		for(Componente c : this.componentes){
+			maxY += Integer.parseInt(c.getConfiguracao().pegaCaracteristicaIndice(c.getConfiguracao().pegaNumeroCaracteristicas() - 1).getAltura());
+		}
+		
+		return maxY;
+	}
+	
 }
