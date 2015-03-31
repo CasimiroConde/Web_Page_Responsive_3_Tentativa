@@ -8,13 +8,15 @@ public class DimensoesPosicionamento {
 	{
 		Solucao ordenadaAltura = solucao.copy();
 		ordenadaAltura.ordenaAltura();
+		int alturaTotal = 0;
 		
-		/*for(int i = 0 ; i < ordenadaAltura.tamanhoSolucao(); i++){
-			ordenadaAltura.pegaUnidadeSolucaoIndice(i).print();	
+		for(int i = 0 ; i < ordenadaAltura.tamanhoSolucao(); i++){
+			if((ordenadaAltura.pegaUnidadeSolucaoIndice(i).getY() + ordenadaAltura.pegaUnidadeSolucaoIndice(i).pegaAlturaComponente()) > alturaTotal){
+				alturaTotal = ordenadaAltura.pegaUnidadeSolucaoIndice(i).getY() + ordenadaAltura.pegaUnidadeSolucaoIndice(i).pegaAlturaComponente();
+			}
 		}
-		System.out.println("|||||||||||||||||||||||||||||||||");*/
 		
-		return ordenadaAltura.pegaUnidadeSolucaoIndice(ordenadaAltura.tamanhoSolucao() - 1).getY() + ordenadaAltura.pegaUnidadeSolucaoIndice(ordenadaAltura.tamanhoSolucao() - 1).pegaAlturaComponente();
+		return alturaTotal;
 	}
 
 	
@@ -22,13 +24,15 @@ public class DimensoesPosicionamento {
 	{
 		Solucao ordenadaLargura = solucao.copy();
 		ordenadaLargura.ordenaLargura();
+		int larguraTotal = 0;
 		
-		/*for(int i = 0 ; i < ordenadaLargura.tamanhoSolucao(); i++){
-			ordenadaLargura.pegaUnidadeSolucaoIndice(i).print();
+		for(int i = 0 ; i < ordenadaLargura.tamanhoSolucao(); i++){
+			if((ordenadaLargura.pegaUnidadeSolucaoIndice(i).getY() + ordenadaLargura.pegaUnidadeSolucaoIndice(i).pegaAlturaComponente()) > larguraTotal){
+				larguraTotal = ordenadaLargura.pegaUnidadeSolucaoIndice(i).getY() + ordenadaLargura.pegaUnidadeSolucaoIndice(i).pegaAlturaComponente();
+			}
 		}
-		System.out.println("|||||||||||||||||||||||||||||||||");*/
-		return ordenadaLargura.pegaUnidadeSolucaoIndice(ordenadaLargura.tamanhoSolucao() - 1).getX() + ordenadaLargura.pegaUnidadeSolucaoIndice(ordenadaLargura.tamanhoSolucao() - 1).pegaLarguraComponente();
-		
+
+		return larguraTotal;
 	}
 
 		
