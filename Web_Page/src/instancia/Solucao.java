@@ -19,8 +19,6 @@ public @Data class Solucao{
 	private Modelo modelo;
 	private String[] nomesFontes;
 	private UnidadeSolucao[] solucao;
-	private MatrizPosicionamento matriz =  new MatrizPosicionamento();
-	private boolean construcaoCompleta;
 	/**
 	 * Construtor de uma Solução  
 	 */
@@ -58,36 +56,6 @@ public @Data class Solucao{
 	 * Considerando Unidades de Solução na mesma linha.
 	 */
 	public int calculaAlturaRealSolucao(){
-		
-		
-		/*ArrayList<Integer> alturaLinha = new ArrayList<Integer>();
-		int alturaTotal = 0;
-		int cont = 0;
-		int maxCont = 0;
-		for(int i = 0 ; i < this.tamanhoSolucao() ; i++){
-			
-			
-			if(i == 0){
-			alturaLinha.add(this.pegaUnidadeSolucaoIndice(i).pegaAlturaComponente(modelo.pegaComponenteIndice(i)));
-			}else if(this.pegaUnidadeSolucaoIndice(i).getFatorPosicao() > 0.625){
-				cont++;
-				if(cont > maxCont){
-					alturaLinha.add(this.pegaUnidadeSolucaoIndice(i).pegaAlturaComponente(modelo.pegaComponenteIndice(i)));
-					maxCont++;
-				}
-			}else if(this.pegaUnidadeSolucaoIndice(i).getFatorPosicao() < 0.5){
-				if(cont != 0)
-					cont--;
-			}else {
-				if(this.pegaUnidadeSolucaoIndice(i).pegaAlturaComponente(modelo.pegaComponenteIndice(i)) > alturaLinha.get(cont))
-					alturaLinha.add(cont, this.pegaUnidadeSolucaoIndice(i).pegaAlturaComponente(modelo.pegaComponenteIndice(i)));
-			}
-		}
-		
-		for(int i : alturaLinha){
-			alturaTotal += i;
-		}
-		*/
 		return DimensoesPosicionamento.executaAltura(this, modelo);
 	}
 	
@@ -96,32 +64,6 @@ public @Data class Solucao{
 	 * Ou seja, o tamanhao da maior linha.
 	 */
 	public Integer calculaLarguraRealSolucao(){
-		/*List<Integer> larguraLinhas = new ArrayList<Integer>();
-		int largura = 0;
-		int j = 0;
-		
-		larguraLinhas.add(0);
-		
-		for(int i = 0 ; i < this.solucao.length ; i++){
-			if(i == 0){
-				larguraLinhas.add(j, larguraLinhas.get(j) + this.pegaUnidadeSolucaoIndice(i).pegaLarguraComponente(modelo.pegaComponenteIndice(i)));		
-			}else if (this.pegaUnidadeSolucaoIndice(i).getFatorPosicao() > 0.625){
-				larguraLinhas.add(j + 1, larguraLinhas.get(j + 1) + this.pegaUnidadeSolucaoIndice(i).pegaLarguraComponente(modelo.pegaComponenteIndice(i)));	
-				j++;
-			}else if ((this.pegaUnidadeSolucaoIndice(i).getFatorPosicao() >= 0.5 && this.pegaUnidadeSolucaoIndice(i).getFatorPosicao() <= 0.625) || j == 0){
-				larguraLinhas.add(j, larguraLinhas.get(j) + this.pegaUnidadeSolucaoIndice(i).pegaLarguraComponente(modelo.pegaComponenteIndice(i)));	
-			}else if (this.pegaUnidadeSolucaoIndice(i).getFatorPosicao() < 0.5){
-				larguraLinhas.add(j - 1, larguraLinhas.get(j - 1) + this.pegaUnidadeSolucaoIndice(i).pegaLarguraComponente(modelo.pegaComponenteIndice(i)));	
-				j--;
-			}
-		}
-		
-		for(int i : larguraLinhas){
-			if(i > largura){
-				largura = i;
-			}
-		}*/
-		
 		return DimensoesPosicionamento.executaLargura(this, modelo);
 	}
 	
@@ -149,7 +91,7 @@ public @Data class Solucao{
 	 * @return 
 	 */
 	public boolean validaSolucao(Modelo modelo){
-		return Validacao.executa(this, LARGURATELA, modelo, construcaoCompleta);
+		return Validacao.executa(this, LARGURATELA, modelo);
 	}
 	
 	/**

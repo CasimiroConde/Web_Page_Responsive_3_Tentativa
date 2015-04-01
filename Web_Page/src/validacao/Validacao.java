@@ -33,16 +33,13 @@ public class Validacao {
 	 * @param modelo
 	 * @return
 	 */
-	public static boolean executa(Solucao solucao, double larguraTela, Modelo modelo, boolean construcaoCompleta){
+	public static boolean executa(Solucao solucao, double larguraTela, Modelo modelo){
 		if (!validaLargura(solucao.calculaLarguraRealSolucao(), larguraTela)) 
 			return false;
 		
 		if(!validaRelacoes(solucao, modelo))
 			return false;
 					
-		if(!construcaoCompleta)
-			return false;
-		
 		return true;
 			
 	}
@@ -102,23 +99,7 @@ public class Validacao {
 		Ordenacao ordenacao = new Ordenacao(modelo);
 		ordenacao.executa();
 		
-		for(int i = 0 ; i < ordenacao.getListaOrdenada().size() ; i ++){
-			for(Dependencias d : ordenacao.getDependencias()){
-				if(d.getA() == ordenacao.getListaOrdenada().indexOf(i)){
-					if(d.getDirecao() == Direcao.ABOVE){
-						if(solucao.getMatriz().pegaLinha(d.getA()) < solucao.getMatriz().pegaLinha(d.getB())){
-							return false;
-						}
-					}
-					if(d.getDirecao() == Direcao.RIGHT){
-						if(solucao.getMatriz().pegaColuna(d.getA()) < solucao.getMatriz().pegaLinha(d.getB())){
-							return false;
-						}
-					}
-				}
-			}
-		}
-		return true;
+				return true;
 	}
 	
 }

@@ -6,6 +6,7 @@ import instancia.Solucao;
 
 import java.io.IOException;
 
+import writer.WebPageWriter;
 import classes.Modelo;
 
 public class MainProgram {
@@ -35,7 +36,7 @@ public class MainProgram {
 		
 		HillClimbing testeHillClimbing = new HillClimbing();
 		testeHillClimbing.executa(modelo);
-		//WebPageWriter.geraPaginaWeb(solucao, modelo);
+		WebPageWriter.geraPaginaWeb(testeHillClimbing.getSolucao(), modelo);
 		
 		System.out.println("FIM");
 	}
