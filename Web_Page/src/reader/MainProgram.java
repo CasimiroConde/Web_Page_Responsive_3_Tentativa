@@ -6,6 +6,7 @@ import instancia.Solucao;
 
 import java.io.IOException;
 
+import montagemEstatica.Montagem;
 import writer.WebPageWriter;
 import classes.Modelo;
 
@@ -31,12 +32,15 @@ public class MainProgram {
 		for (Relacao relac : modelo.getRelacoes())
 			relac.print();*/
 			
-		/*
-		WebPageWriter.geraPaginaWeb(testeHillClimbing.getSolucao(), modelo);*/
 		
-		HillClimbing testeHillClimbing = new HillClimbing();
+		
+		/*HillClimbing testeHillClimbing = new HillClimbing();
 		testeHillClimbing.executa(modelo);
 		WebPageWriter.geraPaginaWeb(testeHillClimbing.getSolucao(), modelo);
+		*/
+		
+		Solucao testeMontage = Montagem.montagemUm(modelo);
+		WebPageWriter.geraPaginaWeb(testeMontage, modelo);
 		
 		System.out.println("FIM");
 	}

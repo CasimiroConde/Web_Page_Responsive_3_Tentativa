@@ -10,7 +10,7 @@ public class PrinterPosicionamento
 		StringBuffer buffer = new StringBuffer();
 		
 		for(int i = 0 ; i < solucao.tamanhoSolucao() ; i++){
-			buffer.append("<div style='position: absolute; top:" + solucao.pegaUnidadeSolucaoIndice(i).getX() + "px; left:" + solucao.pegaUnidadeSolucaoIndice(i).getY() + "px;'>");
+			buffer.append("<div style='position: absolute; top:" + solucao.pegaUnidadeSolucaoIndice(i).getY() + "px; left:" + solucao.pegaUnidadeSolucaoIndice(i).getX() + "px;'>");
 			String nomeArquivo = solucao.pegaUnidadeSolucaoIndice(i).geraNomeFonte();
 			buffer.append("<img src='C:/Users/Casimiro/git/WebResponsive/Web_Page/componentes_food_sense/"+ nomeArquivo + ".PNG'>");	
 			buffer.append("</div>");
