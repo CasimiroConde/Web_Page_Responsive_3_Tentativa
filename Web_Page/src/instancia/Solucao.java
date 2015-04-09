@@ -152,7 +152,15 @@ public @Data class Solucao{
 	}
 			
  // funcão para andar para esquerda
+	
+	public void vizinhoColocaEsquerda(int i) {
+		this.pegaUnidadeSolucaoIndice(i).enviaEsquerda(this.pegaUnidadeSolucaoIndice(i - 1));
+	}
  // função para andar para direita
+	
+	public void vizinhoColocaDireita(int i) {
+		this.pegaUnidadeSolucaoIndice(i).enviaDireita(this.pegaUnidadeSolucaoIndice(i - 1));
+	}
 
 	/**
 	 * Busca uma nova configuração para a Unidade Solução do indice i.
@@ -163,8 +171,7 @@ public @Data class Solucao{
 		Solucao copied = new Solucao(modelo);
 		
 		for (int i = 0; i < modelo.pegaNumeroComponentes(); i++) {
-			UnidadeSolucao item = this.solucao[i];
-			copied.solucao[i] = new UnidadeSolucao(item.getX(), item.getY(), item.getFatorTamanho(), item.getComponente());
+			copied.solucao[i] = this.solucao[i].copy();
 		}
 		return copied;
 	}

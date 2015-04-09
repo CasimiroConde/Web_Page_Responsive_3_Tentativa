@@ -19,16 +19,18 @@ public @Data class UnidadeSolucao {
 	 */
 	public UnidadeSolucao(Componente comp, Modelo modelo) {
 		super();
-		int tamanho = (int) (Math.random() * (comp.getConfiguracao().pegaNumeroCaracteristicas() - 0));
-		this.x = (int) (Math.random() * (modelo.pegaSomaMaximaLargura() - 0));
+		this.componente = comp;
+		int indice = (int) (Math.random() * (this.getComponente().getConfiguracao().pegaNumeroCaracteristicas() - 0));
+		this.x = (int) (Math.random() * (/*(725 - this.pegaLarguraComponente())*/ modelo.pegaSomaMaximaLargura() - 0));
 		this.y = (int) (Math.random() * (modelo.pegaSomaMaximaAltura() - 0));
 
-		if(tamanho == comp.getConfiguracao().pegaNumeroCaracteristicas())
-			this.fatorTamanho = tamanho -1;
+		if(indice >= this.getComponente().getConfiguracao().pegaNumeroCaracteristicas())
+			this.fatorTamanho = this.getComponente().getConfiguracao().pegaNumeroCaracteristicas() - 1;
 		else
-			this.fatorTamanho = tamanho;
+			this.fatorTamanho = indice;
 		
 		this.componente = comp;
+		
 	}
 
 
@@ -115,8 +117,8 @@ public @Data class UnidadeSolucao {
 	public void geraFatorTamanho() {
 		int tamanho = (int) (Math.random() * ((this.getComponente().getConfiguracao().pegaNumeroCaracteristicas() - 0)));
 		
-		if(tamanho == this.getComponente().getConfiguracao().pegaNumeroCaracteristicas())
-			this.fatorTamanho = tamanho -1;
+		if(tamanho >= this.getComponente().getConfiguracao().pegaNumeroCaracteristicas())
+			this.fatorTamanho = tamanho - 1;
 		else
 			this.fatorTamanho = tamanho;
 	

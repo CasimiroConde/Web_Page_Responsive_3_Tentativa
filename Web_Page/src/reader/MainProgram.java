@@ -34,13 +34,13 @@ public class MainProgram {
 			
 		
 		
-		/*HillClimbing testeHillClimbing = new HillClimbing();
+		HillClimbing testeHillClimbing = new HillClimbing();
 		testeHillClimbing.executa(modelo);
 		WebPageWriter.geraPaginaWeb(testeHillClimbing.getSolucao(), modelo);
-		*/
 		
+		/*
 		Solucao testeMontage = Montagem.montagemUm(modelo);
-		WebPageWriter.geraPaginaWeb(testeMontage, modelo);
+		WebPageWriter.geraPaginaWeb(testeMontage, modelo);*/
 		
 		System.out.println("FIM");
 	}

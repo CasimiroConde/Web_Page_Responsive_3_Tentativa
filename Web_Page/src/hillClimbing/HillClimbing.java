@@ -6,7 +6,7 @@ import classes.Modelo;
 
 public @Data class HillClimbing {
 	
-	static private int INTERACOES = 500;
+	static private int INTERACOES = 1000;
 	private Solucao solucao; // fator de otimização
 	private int totalNOK = 0;
 	private int totalOK = 0;
@@ -17,7 +17,7 @@ public @Data class HillClimbing {
 		
 		for(int j = 0; j < INTERACOES; j++){
 			if(solucaoTeste.validaSolucao(modelo)) {
-				for (int i = 0; i < modelo.pegaNumeroComponentes(); i++) {
+				for (int i = 1; i < modelo.pegaNumeroComponentes(); i++) {
 					if (testeVizinho(i, solucaoTeste)) {
 						solucao = solucaoTeste.copy(); //new Solucao(solucaoTeste);
 						break;
@@ -53,10 +53,16 @@ public @Data class HillClimbing {
 			return true;
 		
 		//esquerda
+		solucaoTeste.vizinhoColocaEsquerda(numeroComponente);
 
+		if(solucaoTeste.fitnessFunction() < solucao.fitnessFunction())
+			return true;
 
 		//Direita
+		solucaoTeste.vizinhoColocaDireita(numeroComponente);
 
+		if(solucaoTeste.fitnessFunction() < solucao.fitnessFunction())
+			return true;	
 
 		//Busca comfiguracao semelhante
 		//solucaoTeste.vizinhoBuscaConfiguracao(numeroComponente);

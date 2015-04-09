@@ -27,8 +27,8 @@ public class DimensoesPosicionamento {
 		int larguraTotal = 0;
 		
 		for(int i = 0 ; i < ordenadaLargura.tamanhoSolucao(); i++){
-			if((ordenadaLargura.pegaUnidadeSolucaoIndice(i).getY() + ordenadaLargura.pegaUnidadeSolucaoIndice(i).pegaAlturaComponente()) > larguraTotal){
-				larguraTotal = ordenadaLargura.pegaUnidadeSolucaoIndice(i).getY() + ordenadaLargura.pegaUnidadeSolucaoIndice(i).pegaAlturaComponente();
+			if((ordenadaLargura.pegaUnidadeSolucaoIndice(i).getX() + ordenadaLargura.pegaUnidadeSolucaoIndice(i).pegaAlturaComponente()) > larguraTotal){
+				larguraTotal = ordenadaLargura.pegaUnidadeSolucaoIndice(i).getX() + ordenadaLargura.pegaUnidadeSolucaoIndice(i).pegaAlturaComponente();
 			}
 		}
 

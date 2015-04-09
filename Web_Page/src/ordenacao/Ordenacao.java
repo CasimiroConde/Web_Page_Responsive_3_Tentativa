@@ -79,5 +79,9 @@ public @Data class Ordenacao {
 		}
 		return null;
 	}
+	
+	public int pegaListaOrdenadaIndice(int indice){
+		return this.listaOrdenada.get(indice);
+	}
 
 }
