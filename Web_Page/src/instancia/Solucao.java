@@ -18,32 +18,32 @@ public @Data class Solucao{
 	//InfoTela informacaoTela;
 	private Modelo modelo;
 	private String[] nomesFontes;
-	private UnidadeSolucao[] solucao;
+	private String solucao;
+	
 	/**
 	 * Construtor de uma Solução  
 	 */
 	public Solucao(Modelo modelo){
 		this.modelo = modelo;
 //		this.solucao = new UnidadeSolucao[0];	
-		this.solucao = new UnidadeSolucao[modelo.pegaNumeroComponentes()];
+		this.solucao = new String();
 
-		for (int i = 0; i < modelo.pegaNumeroComponentes(); i++) {
-			this.solucao[i] = new UnidadeSolucao(modelo.pegaComponenteIndice(i), modelo);
-		}
+			this.solucao = "c,v,c,h,c,v,0,0,1,0,S,c,h,2,0,S,S,c,h,12,0,c,h,3,0,4,0,5,0,6,0,S,S,c,h,13,0,c,h,c,h,7,0,S,c,h,8,0,9,0,10,0,11,0,S,S,S,c,h,14,0,S,S";
+		
 	}
 	
 	/** 
 	 * @return quantidade de Unidades de Solução contidas na Solução.
 	 */
 	public int tamanhoSolucao(){
-		return this.getSolucao().length;
+		return this.getSolucao().length();
 	}
 	
 	/**
 	 * @return Altura máxima da solução
 	 * Somando a altura de todas Unidades de Solução como se estivessem uma embaixo da outra.
 	 */
-	public int calculaAlturaMaximaSolucao(){
+	/*public int calculaAlturaMaximaSolucao(){
 		int alturaTotal = 0;
 		for(int i = 0 ; i < this.tamanhoSolucao() ; i++ ){
 			alturaTotal += this.pegaUnidadeSolucaoIndice(i).pegaAlturaComponente();
@@ -51,39 +51,39 @@ public @Data class Solucao{
 		return alturaTotal;
 	}
 	
-	/**
+	*//**
 	 * @return Altura real da solução.
 	 * Considerando Unidades de Solução na mesma linha.
-	 */
+	 *//*
 	public int calculaAlturaRealSolucao(){
 		return DimensoesPosicionamento.executaAltura(this, modelo);
 	}
 	
-	/** 
+	*//** 
 	 * @return Largura da Solução.
 	 * Ou seja, o tamanhao da maior linha.
-	 */
+	 *//*
 	public Integer calculaLarguraRealSolucao(){
 		return DimensoesPosicionamento.executaLargura(this, modelo);
 	}
 	
-	/**
+	*//**
 	 * @return Coeficiente de Informação da Solução.
-	 */
+	 *//*
 	public double calculaCoeficienteSolucao(){
-		return this.calculaSomaCoeficiente() / this.solucao.length;	
-	}
+		return this.calculaSomaCoeficiente() / this.modelo.pegaNumeroComponentes();	
+	}*/
 
 	/**
 	 * @return Soma dos Coeficientes de Informação das Unidades de Solução.
 	 */
-	private double calculaSomaCoeficiente() {
+	/*private double calculaSomaCoeficiente() {
 		double coeficienteTotal = 0.0;
 		for(int i = 0 ; i < this.tamanhoSolucao() ; i++ ){
 			coeficienteTotal += this.pegaUnidadeSolucaoIndice(i).pegaCoeficienteComponente(modelo.pegaComponenteIndice(i));
 		}
 		return coeficienteTotal;
-	}
+	}*/
 	
 	/**
 	 * Verifica se a Solução é válida, considerando os testes feitos pela Classe de Validação.
@@ -97,111 +97,40 @@ public @Data class Solucao{
 	/**
 	 * @return fitness function da solução.
 	 */
-	public double fitnessFunction(){
+	/*public double fitnessFunction(){
 		return FATOR * this.calculaFatorVertical() + (1 - FATOR) * (1 - this.calculaCoeficienteSolucao());
-	}
+	}*/
 	
 	/**
 	 * @return Fator Vertival.
 	 * Utilizado para calcular a fitness function.
 	 */
-	public double calculaFatorVertical(){
+/*	public double calculaFatorVertical(){
 		return this.calculaAlturaRealSolucao() / this.calculaAlturaMaximaSolucao();
 	}
 	
-	/**
+	*//**
 	 * Imprime as informações completas de uma solução. 
-	 */
+	 *//*
 	public void print(){
-		/*for(UnidadeSolucao u : this.solucao){
+		for(UnidadeSolucao u : this.solucao){
 			u.print();
-		}*/
+		}
 		System.out.println("Altura Máxima: " + this.calculaAlturaMaximaSolucao());
 		System.out.println("Altura Total: " + this.calculaAlturaRealSolucao());
 		System.out.println("Media Coeficiente de Informação: " + this.calculaCoeficienteSolucao());
 		System.out.println("Fitness Function: " + this.fitnessFunction());
 		System.out.println("Largura Solução: " + this.calculaLarguraRealSolucao());
 		System.out.println("Largura Tela: " + LARGURATELA);
-	}
+	}*/
 	
-	/**
-	 * @param i
-	 * @return Unidade de Solução do indice i
-	 */
-	public UnidadeSolucao pegaUnidadeSolucaoIndice(int i){
-		if(i < 0)
-			return null;
-		
-		return this.solucao[i];
-	}
 
-	/**
-	 * Sobe a linha  da unidade de solução do indice i
-	 * @param i
-	 */
-	public void vizinhoSobeLinha(int i) {
-		this.pegaUnidadeSolucaoIndice(i).sobeLinha(this.pegaUnidadeSolucaoIndice(i - 1));		
-	}
-
-	/**
-	 * Desce linha da Unidade de Solução do indice i
-	 * @param i
-	 */
-	public void vizinhoDesceLinha(int i) {
-		this.pegaUnidadeSolucaoIndice(i).desceLinha(this.pegaUnidadeSolucaoIndice(i - 1));
-	}
-			
- // funcão para andar para esquerda
-	
-	public void vizinhoColocaEsquerda(int i) {
-		this.pegaUnidadeSolucaoIndice(i).enviaEsquerda(this.pegaUnidadeSolucaoIndice(i - 1));
-	}
- // função para andar para direita
-	
-	public void vizinhoColocaDireita(int i) {
-		this.pegaUnidadeSolucaoIndice(i).enviaDireita(this.pegaUnidadeSolucaoIndice(i - 1));
-	}
-
-	/**
-	 * Busca uma nova configuração para a Unidade Solução do indice i.
-	 * @param i
-	 */
-
-	public Solucao copy() {
+		public Solucao copy() {
 		Solucao copied = new Solucao(modelo);
 		
-		for (int i = 0; i < modelo.pegaNumeroComponentes(); i++) {
-			copied.solucao[i] = this.solucao[i].copy();
-		}
+			copied.solucao = this.solucao;
+		
 		return copied;
-	}
-	
-	public void ordenaAltura(){
-		UnidadeSolucao aux = null;
-		
-		for(int i = 0 ; i < this.tamanhoSolucao() ; i++){
-			for(int j = 0 ; j < this.tamanhoSolucao() - 1 ; j++){
-				if(this.pegaUnidadeSolucaoIndice(j).getY() > this.pegaUnidadeSolucaoIndice(j + 1).getY()){
-					aux = this.pegaUnidadeSolucaoIndice(j);
-					this.solucao[j] = this.pegaUnidadeSolucaoIndice(j + 1);
-					this.solucao[j + 1] = aux;
-				}
-			}
-		}
-	}
-
-	public void ordenaLargura() {
-		UnidadeSolucao aux = null;
-		
-		for(int i = 0 ; i < this.tamanhoSolucao() ; i++){
-			for(int j = 0 ; j < this.tamanhoSolucao() - 1 ; j++){
-				if(this.pegaUnidadeSolucaoIndice(j).getX() > this.pegaUnidadeSolucaoIndice(j + 1).getX()){
-					aux = this.pegaUnidadeSolucaoIndice(j);
-					this.solucao[j] = this.pegaUnidadeSolucaoIndice(j + 1);
-					this.solucao[j + 1] = aux;
-				}
-			}
-		}
 	}
 
 }

@@ -6,11 +6,15 @@ import instancia.Solucao;
 
 import java.io.IOException;
 
+import arvoreSolucao.ArvoreSolucao;
+import arvoreSolucao.GeraArvore;
+import arvoreSolucao.Node;
 import montagemEstatica.Montagem;
 import writer.WebPageWriter;
 import classes.Modelo;
 
 public class MainProgram {
+
 
 	/**
 	 * Núcleo o programa.
@@ -34,13 +38,20 @@ public class MainProgram {
 			
 		
 		
-		HillClimbing testeHillClimbing = new HillClimbing();
+		/*HillClimbing testeHillClimbing = new HillClimbing();
 		testeHillClimbing.executa(modelo);
-		WebPageWriter.geraPaginaWeb(testeHillClimbing.getSolucao(), modelo);
+		WebPageWriter.geraPaginaWeb(testeHillClimbing.getSolucao(), modelo);*/
 		
 		/*
 		Solucao testeMontage = Montagem.montagemUm(modelo);
 		WebPageWriter.geraPaginaWeb(testeMontage, modelo);*/
+		
+		Solucao solucao = new Solucao(modelo);
+		ArvoreSolucao<Node> arvore = GeraArvore.executa(solucao.getSolucao());
+		
+		String impressao = arvore.toString();
+		
+		System.out.println(impressao);
 		
 		System.out.println("FIM");
 	}
