@@ -6,6 +6,8 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import arvoreSolucao.ArvoreSolucao;
+import arvoreSolucao.Node;
 import classes.Modelo;
 
 /**
@@ -22,12 +24,12 @@ public class WebPageWriter {
 	 * @param solucao
 	 * @throws IOException
 	 */
-	public static void geraPaginaWeb(Solucao solucao, Modelo modelo) throws IOException{
+	public static void geraPaginaWeb(ArvoreSolucao<Node> arvore, Modelo modelo) throws IOException{
 	    StringBuilder buffer = new StringBuilder();
 	    
 	    geraCabecalho(buffer);
 	    iniciaBody(buffer);
-	    geraConteudo(solucao, buffer, modelo);
+	    geraConteudo(arvore, buffer, modelo);
 	    encerraBody(buffer);
 	    encerraArquivo(buffer);
 	    
@@ -39,27 +41,13 @@ public class WebPageWriter {
 	 * @param solucao
 	 * @param buffer
 	 */
-	private static void geraConteudo(Solucao solucao, StringBuilder buffer, Modelo modelo) {
+	private static void geraConteudo(ArvoreSolucao<Node> arvore, StringBuilder buffer, Modelo modelo) {
 		
-		buffer.append(PrinterPosicionamento.executa(solucao,modelo));
+		buffer.append(PrinterPosicionamento.executa(arvore ,modelo));
 
     }
 
-	/**
-	 * Função responsável pela geraçã das linhas da página Web.
-	 * Garante que os componentes localizados na mesma linha serão exibidos dessa forma.
-	 * @param solucao
-	 * @param buffer
-	 * @param indice
-	 */
-	private static StringBuffer geraLinha(Solucao solucao, int indice, Modelo modelo) {
-		StringBuffer sb = new StringBuffer();
-		sb.append("<div style='position: absolute; top:" + solucao.pegaUnidadeSolucaoIndice(indice).getX() + "px; left:" + solucao.pegaUnidadeSolucaoIndice(indice).getY() + "px;'>");
-		String nomeArquivo = solucao.pegaUnidadeSolucaoIndice(indice).geraNomeFonte();
-		sb.append("<img src='componentes_food_sense/"+ nomeArquivo + ".PNG'>");	
-		sb.append("</div>");
-		return sb;
-	}
+
 
 	/**
 	 * Inicia um <div>

@@ -53,6 +53,8 @@ public class MainProgram {
 		
 		System.out.println(impressao);
 		
+		WebPageWriter.geraPaginaWeb(arvore, modelo);
+		
 		System.out.println("FIM");
 	}
 }

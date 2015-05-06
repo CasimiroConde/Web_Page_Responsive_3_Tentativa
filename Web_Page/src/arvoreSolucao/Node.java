@@ -1,7 +1,5 @@
 package arvoreSolucao;
 
-import java.util.ArrayList;
-
 import lombok.Data;
 
 public @Data class Node {
@@ -24,5 +22,6 @@ public @Data class Node {
 			
 		}	
 	}
+	
 
 }

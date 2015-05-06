@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
-import javax.swing.text.Position;
+import lombok.Data;
 
-public class ArvoreSolucao<Node>{
+@SuppressWarnings("hiding")
+public @Data class ArvoreSolucao<Node>{
 
 	private Node head;
 	
@@ -100,6 +101,16 @@ public class ArvoreSolucao<Node>{
 		  s = inc + head;
 		  for (ArvoreSolucao<Node> child : leafs) {
 			  s += "\n" + child.printTree(increment + indent);
+		  }
+		  return s;
+	  }
+	  
+	  public String printWebPage() {
+		  String s = "";
+		  
+		  for (ArvoreSolucao<Node> child : this.getLeafs()) {
+			  Node no = child.getHead();
+			  
 		  }
 		  return s;
 	  }

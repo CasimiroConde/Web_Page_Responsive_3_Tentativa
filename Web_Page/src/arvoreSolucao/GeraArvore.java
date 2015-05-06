@@ -1,10 +1,6 @@
 package arvoreSolucao;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-
-import classes.Modelo;
-import instancia.Solucao;
 
 public class GeraArvore {
 	

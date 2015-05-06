@@ -1,5 +1,6 @@
 package arvoreSolucao;
 
+import classes.Modelo;
 import lombok.Data;
 
 public @Data class Element {
@@ -11,6 +12,10 @@ public @Data class Element {
 		this.indiceComponente = componenteIndice;
 		this.indiceCaracteristica = caractIndice;
 		
+	}
+	
+	public String geraNome(Modelo modelo){
+		return modelo.pegaComponenteIndice(indiceComponente).getNome() + "_" + (this.indiceCaracteristica + 1);	
 	}
 
 }

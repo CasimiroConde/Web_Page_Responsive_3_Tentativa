@@ -1,21 +1,35 @@
 package writer;
 
+import arvoreSolucao.ArvoreSolucao;
+import arvoreSolucao.Node;
 import instancia.Solucao;
 import classes.Modelo;
 
 public class PrinterPosicionamento 
+
+
 {
-	public static StringBuffer executa(Solucao solucao, Modelo modelo)
-	{
-		StringBuffer buffer = new StringBuffer();
-		
-		for(int i = 0 ; i < solucao.tamanhoSolucao() ; i++){
-			buffer.append("<div style='position: absolute; top:" + solucao.pegaUnidadeSolucaoIndice(i).getY() + "px; left:" + solucao.pegaUnidadeSolucaoIndice(i).getX() + "px;'>");
-			String nomeArquivo = solucao.pegaUnidadeSolucaoIndice(i).geraNomeFonte();
-			buffer.append("<img src='C:/Users/Casimiro/git/WebResponsive/Web_Page/componentes_food_sense/"+ nomeArquivo + ".PNG'>");	
-			buffer.append("</div>");
-		}
-	
-		return buffer;
-	}
+	  public static StringBuffer executa(ArvoreSolucao<Node> arvore, Modelo modelo) {
+		  StringBuffer buffer = new StringBuffer();
+		  
+		  for (ArvoreSolucao<Node> child : arvore.getLeafs()) {
+			 
+			 if(child.getHead().getTipo() == 1){
+				String style;
+				 	if(child.getHead().getConteiner().getDirecao() == 1){
+				 		style = "style='float:left;'";
+					 }else{
+						 style = "";
+					 }
+				buffer.append("<div " + style + ">");
+				buffer.append(executa(child, modelo));	
+			 } else if(child.getHead().getTipo() == 0){
+				String nomeArquivo = child.getHead().getElemento().geraNome(modelo);
+				buffer.append("<img src='C:/Users/Casimiro/git/WebResponsive/Web_Page/componentes_food_sense/"+ nomeArquivo + ".PNG'>");	
+			 } 
+		  }
+		  buffer.append("</div>");
+		  return buffer;
+	  }
+
 }
