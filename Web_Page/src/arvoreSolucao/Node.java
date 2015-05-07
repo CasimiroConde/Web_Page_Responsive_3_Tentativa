@@ -23,5 +23,14 @@ public @Data class Node {
 		}	
 	}
 	
+	public Node(Node no){
+		this.tipo = no.getTipo();
+		if(tipo == 0){
+			this.elemento = new Element(no.getElemento());
+		} else if(tipo == 1){
+			this.conteiner = new Conteiner(no.getConteiner());
+		}	
+	}
+	
 
 }

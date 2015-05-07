@@ -19,7 +19,7 @@ public class PrinterPosicionamento
 				 	if(child.getHead().getConteiner().getDirecao() == 1){
 				 		style = "style='float:left;'";
 					 }else{
-						 style = "";
+						 style = "style='float:left; width:" +child.getHead().getConteiner().getTamanho() + "'";
 					 }
 				buffer.append("<div " + style + ">");
 				buffer.append(executa(child, modelo));	

@@ -2,11 +2,13 @@ package arvoreSolucao;
 
 import java.util.ArrayList;
 
+import classes.Modelo;
+
 public class GeraArvore {
 	
 	
 
-	public static ArvoreSolucao<Node> executa(String input){
+	public static ArvoreSolucao<Node> executa(String input, Modelo modelo){
 		
 		String[] vetorInput = input.split(",");
 		String[] infos = new String[2];
@@ -45,6 +47,10 @@ public class GeraArvore {
 				infos[1] = vetorInput[i + 1];
 				Node no = new Node(0,infos);
 				arvore.addLeaf(listaPai.get(listaPai.size() - 1), no);
+				//adiciona tamanho no conteiner pai desse elemento.
+				//if(arvore.getTree(listaPai.get(listaPai.size() - 1)).getHead().getConteiner().getTamanho() < Integer.parseInt(modelo.pegaComponenteIndice(no.getElemento().getIndiceComponente()).getConfiguracao().pegaCaracteristicaIndice(no.getElemento().getIndiceCaracteristica()).getLargura())){
+				//	arvore.getTree(listaPai.get(listaPai.size() - 1)).getHead().getConteiner().setTamanho(Integer.parseInt(modelo.pegaComponenteIndice(no.getElemento().getIndiceComponente()).getConfiguracao().pegaCaracteristicaIndice(no.getElemento().getIndiceCaracteristica()).getLargura()));
+				//}
 				i = i + 2;
 				continue;
 			}

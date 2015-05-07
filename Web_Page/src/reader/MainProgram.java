@@ -47,7 +47,7 @@ public class MainProgram {
 		WebPageWriter.geraPaginaWeb(testeMontage, modelo);*/
 		
 		Solucao solucao = new Solucao(modelo);
-		ArvoreSolucao<Node> arvore = GeraArvore.executa(solucao.getSolucao());
+		ArvoreSolucao<Node> arvore = GeraArvore.executa(solucao.getSolucao(), modelo);
 		
 		String impressao = arvore.toString();
 		

@@ -2,7 +2,7 @@
 # ID; Tipo; largura; altura; coeficiente de informação
 #
 C; branding; 120; 120; 100
-C; box menu; 640; 32; 100
+C; box menu; 180; 160; 100
 C; box menu; 160; 128; 100
 C; box menu; 116; 244; 100
 C; box menu; 74; 132; 60

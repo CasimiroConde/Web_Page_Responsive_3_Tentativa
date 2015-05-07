@@ -14,6 +14,11 @@ public @Data class Element {
 		
 	}
 	
+	public Element(Element e) {
+		this.indiceComponente = e.getIndiceComponente();
+		this.indiceCaracteristica = e.getIndiceCaracteristica();
+	}
+	
 	public String geraNome(Modelo modelo){
 		return modelo.pegaComponenteIndice(indiceComponente).getNome() + "_" + (this.indiceCaracteristica + 1);	
 	}

@@ -13,4 +13,10 @@ public @Data class Conteiner {
 		this.direcao = dir;
 		this.tamanho = 0;
 	}
+	
+	public Conteiner(Conteiner c) {
+		this.indice = c.getIndice();
+		this.direcao = c.getDirecao();
+		this.tamanho = c.getTamanho();
+	}
 }
