@@ -48,11 +48,17 @@ public class GeraArvore {
 				Node no = new Node(0,infos);
 				arvore.addLeaf(listaPai.get(listaPai.size() - 1), no);
 				//adiciona tamanho no conteiner pai desse elemento.
-				//if(arvore.getTree(listaPai.get(listaPai.size() - 1)).getHead().getConteiner().getTamanho() < Integer.parseInt(modelo.pegaComponenteIndice(no.getElemento().getIndiceComponente()).getConfiguracao().pegaCaracteristicaIndice(no.getElemento().getIndiceCaracteristica()).getLargura())){
-				//	arvore.getTree(listaPai.get(listaPai.size() - 1)).getHead().getConteiner().setTamanho(Integer.parseInt(modelo.pegaComponenteIndice(no.getElemento().getIndiceComponente()).getConfiguracao().pegaCaracteristicaIndice(no.getElemento().getIndiceCaracteristica()).getLargura()));
-				//}
+				if(arvore.getTree(listaPai.get(listaPai.size() - 1)).getHead().getConteiner().getTamanho() < Integer.parseInt(modelo.pegaComponenteIndice(no.getElemento().getIndiceComponente()).getConfiguracao().pegaCaracteristicaIndice(no.getElemento().getIndiceCaracteristica()).getLargura())){
+					Node novoHead = new Node(arvore.getTree(listaPai.get(listaPai.size() - 1)).getHead());
+					novoHead.getConteiner().setTamanho(Integer.parseInt(modelo.pegaComponenteIndice(no.getElemento().getIndiceComponente()).getConfiguracao().pegaCaracteristicaIndice(no.getElemento().getIndiceCaracteristica()).getLargura()));
+					arvore.getTree(listaPai.get(listaPai.size() - 1)).setHead(novoHead);
+					listaPai.remove(listaPai.size() - 1);
+					listaPai.add(novoHead);
+				}
+				
+				
 				i = i + 2;
-				continue;
+				continue;	
 			}
 		}
 		

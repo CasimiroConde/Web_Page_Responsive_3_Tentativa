@@ -1,5 +1,6 @@
 package reader;
 
+import static org.junit.Assert.assertEquals;
 import hillClimbing.HillClimbing;
 import instancia.DimensoesPosicionamento;
 import instancia.Solucao;
@@ -35,16 +36,8 @@ public class MainProgram {
 
 		for (Relacao relac : modelo.getRelacoes())
 			relac.print();*/
-			
 		
 		
-		/*HillClimbing testeHillClimbing = new HillClimbing();
-		testeHillClimbing.executa(modelo);
-		WebPageWriter.geraPaginaWeb(testeHillClimbing.getSolucao(), modelo);*/
-		
-		/*
-		Solucao testeMontage = Montagem.montagemUm(modelo);
-		WebPageWriter.geraPaginaWeb(testeMontage, modelo);*/
 		
 		Solucao solucao = new Solucao(modelo);
 		ArvoreSolucao<Node> arvore = GeraArvore.executa(solucao.getSolucao(), modelo);
@@ -54,6 +47,9 @@ public class MainProgram {
 		System.out.println(impressao);
 		
 		WebPageWriter.geraPaginaWeb(arvore, modelo);
+
+		
+		
 		
 		System.out.println("FIM");
 	}
