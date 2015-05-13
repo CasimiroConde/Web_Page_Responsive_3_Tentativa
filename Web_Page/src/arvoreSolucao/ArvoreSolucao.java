@@ -30,6 +30,11 @@ public @Data class ArvoreSolucao<Node>{
 	    }
 	}
 	
+	public void remove(){
+		int indice = this.getParent().getLeafs().indexOf(this);
+		this.getParent().getLeafs().remove(indice);
+	}
+	
 	 public ArvoreSolucao<Node> addLeaf(Node leaf) {
 	    ArvoreSolucao<Node> t = new ArvoreSolucao<Node>(leaf);
 	    leafs.add(t);
@@ -56,6 +61,7 @@ public @Data class ArvoreSolucao<Node>{
 	  public ArvoreSolucao<Node> getTree(Node element) {
 	    return locate.get(element);
 	  }
+	  
 
 	  public ArvoreSolucao<Node> getParent() {
 	    return parent;
