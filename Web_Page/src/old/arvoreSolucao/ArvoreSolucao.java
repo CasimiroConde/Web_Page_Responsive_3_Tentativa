@@ -1,4 +1,4 @@
-package arvoreSolucao;
+package old.arvoreSolucao;
 
 import java.util.ArrayList;
 import java.util.Collection;

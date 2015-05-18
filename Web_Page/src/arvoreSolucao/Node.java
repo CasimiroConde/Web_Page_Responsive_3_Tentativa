@@ -1,36 +1,61 @@
 package arvoreSolucao;
 
-import lombok.Data;
+import java.util.ArrayList;
 
-public @Data class Node {
+import lombok.Getter;
+
+public class Node {
+
+	private @Getter Conteiner conteiner = null;
+	private @Getter Element elemento = null;
+	private ArrayList<Node> leafs;
+	private @Getter Node parent = null;
+
+	public Node(int indiceComponente, int indiceCaracteristica) {
+		this.elemento = new Element(indiceComponente, indiceCaracteristica);
+		this.leafs = new ArrayList<Node>();
+	}
 	
-	private int tipo; // 0 elemento; 1 conteiner
-	private Conteiner conteiner;
-	private Element elemento;
+	public Node(int indiceConteiner, DirecaoConteiner direcao) {
+		this.conteiner = new Conteiner(indiceConteiner, direcao);
+		this.leafs = new ArrayList<Node>();
+	}
+
+	public void addLeaf(Node leaf) {
+		this.leafs.add(leaf);
+	}
+
+	public void remove() {
+		parent.removeLeaf(this);
+	}
 	
-	public Node(int tipo, String[] info){
-		this.tipo = tipo;
-		if(tipo == 0){
-			int componenteIndice = Integer.parseInt(info[0]);
-			int caractIndice = Integer.parseInt(info[1]);
-			this.elemento = new Element(componenteIndice, caractIndice);
-		} else if(tipo == 1){
-			if(info[1].equals("v")){
-				this.conteiner = new Conteiner(info[0],0);;}
-			else{
-				this.conteiner = new Conteiner(info[0],1);;}
+	public void removeLeaf(Node leaf)
+	{
+		leafs.remove(leaf);
+	}
+
+	public Iterable<Node> getLeafs() {
+		return leafs;
+	}
+	
+	@Override
+	public String toString() {
+		String s = "";
+		
+		if (conteiner != null) {
+			s += "c," + conteiner.getDirecao().getCodigo() + ",";
+
+			for (Node child : leafs) {
+				s += child.toString();
+			}
 			
-		}	
-	}
-	
-	public Node(Node no){
-		this.tipo = no.getTipo();
-		if(tipo == 0){
-			this.elemento = new Element(no.getElemento());
-		} else if(tipo == 1){
-			this.conteiner = new Conteiner(no.getConteiner());
-		}	
-	}
-	
+			s += "s,";
+		}
 
+		if (elemento != null) {
+			s += elemento.getIndiceComponente() + "," + elemento.getIndiceCaracteristica() + ",";
+		}
+
+		return s;
+	}
 }

@@ -1,68 +1,64 @@
 package arvoreSolucao;
 
-import java.util.ArrayList;
+import java.util.Stack;
 
+import classes.Caracteristica;
+import classes.Componente;
 import classes.Modelo;
 
 public class GeraArvore {
 	
-	
-
-	public static ArvoreSolucao<Node> executa(String input, Modelo modelo){
-		
+	public static Node executa(String input, Modelo modelo) {
 		String[] vetorInput = input.split(",");
-		String[] infos = new String[2];
 		int contConteiner = 0;
 		
-		infos[0] = Integer.toString(contConteiner);
-		infos[1] = vetorInput[1];
-		
-		Node pai = new Node(1, infos);
-		ArvoreSolucao<Node> arvore = new ArvoreSolucao<Node>(pai);
-		
-		ArrayList<Node> listaPai = new ArrayList<Node>();
-		listaPai.add(pai);
+		Node pai = new Node(contConteiner, DirecaoConteiner.get(vetorInput[1]));
+		Stack<Node> pilhaConteiners = new Stack<Node>();
+		pilhaConteiners.push(pai);
 		
 		contConteiner++;
-		int i = 2;
+		int posicaoVetor = 2;
 		
-		while ( i < vetorInput.length){
+		while (posicaoVetor < vetorInput.length) {
+			String token = vetorInput[posicaoVetor];
 		
-			if(vetorInput[i].equals("S") || vetorInput[i].equals("s")){
-				listaPai.remove(listaPai.size() - 1);
-				i++;
-				continue;
+			if (token.compareToIgnoreCase("s") == 0) {
+				pilhaConteiners.pop();
+				posicaoVetor++;
 			}
-			if(vetorInput[i].equals("c") || vetorInput[i].equals("C")){
-				infos[0] = Integer.toString(contConteiner);
-				infos[1] = vetorInput[i + 1];
-				Node no = new Node(1, infos);
-				arvore.addLeaf(listaPai.get(listaPai.size() - 1), no);
-				listaPai.add(no);
-				i = i + 2;
+
+			else if (token.compareToIgnoreCase("c") == 0) {
+				DirecaoConteiner direcao = DirecaoConteiner.get(vetorInput[posicaoVetor + 1]);
+				Node no = new Node(contConteiner, direcao);
+
+				Node conteiner = pilhaConteiners.peek();
+				conteiner.addLeaf(no);
+				pilhaConteiners.push(no);
+				
+				posicaoVetor = posicaoVetor + 2;
 				contConteiner++;
-				continue;
-			} else {
-				infos[0] = vetorInput[i];
-				infos[1] = vetorInput[i + 1];
-				Node no = new Node(0,infos);
-				arvore.addLeaf(listaPai.get(listaPai.size() - 1), no);
-				//adiciona tamanho no conteiner pai desse elemento.
-				if(arvore.getTree(listaPai.get(listaPai.size() - 1)).getHead().getConteiner().getTamanho() < Integer.parseInt(modelo.pegaComponenteIndice(no.getElemento().getIndiceComponente()).getConfiguracao().pegaCaracteristicaIndice(no.getElemento().getIndiceCaracteristica()).getLargura())){
-					Node novoHead = new Node(arvore.getTree(listaPai.get(listaPai.size() - 1)).getHead());
-					novoHead.getConteiner().setTamanho(Integer.parseInt(modelo.pegaComponenteIndice(no.getElemento().getIndiceComponente()).getConfiguracao().pegaCaracteristicaIndice(no.getElemento().getIndiceCaracteristica()).getLargura()));
-					arvore.getTree(listaPai.get(listaPai.size() - 1)).setHead(novoHead);
-					listaPai.remove(listaPai.size() - 1);
-					listaPai.add(novoHead);
+			}
+			
+			else {
+				int indiceComponente = Integer.parseInt(vetorInput[posicaoVetor]);
+				int indiceCaracteristica = Integer.parseInt(vetorInput[posicaoVetor + 1]);
+				Node no = new Node(indiceComponente, indiceCaracteristica);
+				
+				Node noConteiner = pilhaConteiners.peek();
+				noConteiner.addLeaf(no);
+
+				Componente componente = modelo.pegaComponenteIndice(indiceComponente);
+				Caracteristica caracteristica = componente.getConfiguracao().pegaCaracteristicaIndice(indiceCaracteristica);
+				int largura = Integer.parseInt(caracteristica.getLargura());
+				int tamanho = noConteiner.getConteiner().getTamanho();
+				
+				if(tamanho < largura){
+					noConteiner.getConteiner().setTamanho(largura);
 				}
-				
-				
-				i = i + 2;
-				continue;	
+				posicaoVetor = posicaoVetor + 2;
 			}
 		}
 		
-			return arvore;
+		return pai;
 	}
-	
 }
