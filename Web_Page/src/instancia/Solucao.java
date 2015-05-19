@@ -28,7 +28,7 @@ public @Data class Solucao{
 //		this.solucao = new UnidadeSolucao[0];	
 		this.solucao = new String();
 
-			this.solucao = "c,v,c,h,c,v,0,0,1,0,S,c,h,2,0,S,S,c,h,12,0,c,h,3,0,4,0,5,0,6,0,S,S,c,h,13,0,c,h,c,h,7,0,S,c,h,8,0,9,0,10,0,11,0,S,S,S,c,h,14,0,S,S";
+			this.solucao = "c,v,c,h,c,v,0,0,1,0,S,c,h,2,0,S,S,c,h,c,h,12,0,S,c,h,3,0,4,0,5,0,6,0,S,S,c,h,c,v,13,0,S,c,h,c,h,7,0,S,c,h,8,0,9,0,10,0,11,0,S,S,S,c,h,14,0,S,S";
 		
 	}
 	

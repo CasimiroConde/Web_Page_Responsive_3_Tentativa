@@ -2,14 +2,15 @@ package arvoreSolucao;
 
 import java.util.ArrayList;
 
+import lombok.Data;
 import lombok.Getter;
 
-public class Node {
+public @Data class Node {
 
-	private @Getter Conteiner conteiner = null;
-	private @Getter Element elemento = null;
+	private  Conteiner conteiner = null;
+	private  Element elemento = null;
 	private ArrayList<Node> leafs;
-	private @Getter Node parent = null;
+	private  Node parent = null;
 
 	public Node(int indiceComponente, int indiceCaracteristica) {
 		this.elemento = new Element(indiceComponente, indiceCaracteristica);
@@ -23,6 +24,7 @@ public class Node {
 
 	public void addLeaf(Node leaf) {
 		this.leafs.add(leaf);
+		this.leafs.get(this.leafs.size() - 1).setParent(this);
 	}
 
 	public void remove() {

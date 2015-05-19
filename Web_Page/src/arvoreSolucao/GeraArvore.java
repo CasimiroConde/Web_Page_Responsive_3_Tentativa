@@ -8,11 +8,14 @@ import classes.Modelo;
 
 public class GeraArvore {
 	
+	public static int TAMANHO_DE_TELA = 1200;
+	
 	public static Node executa(String input, Modelo modelo) {
 		String[] vetorInput = input.split(",");
 		int contConteiner = 0;
 		
 		Node pai = new Node(contConteiner, DirecaoConteiner.get(vetorInput[1]));
+		pai.getConteiner().setTamanho(TAMANHO_DE_TELA);
 		Stack<Node> pilhaConteiners = new Stack<Node>();
 		pilhaConteiners.push(pai);
 		
@@ -54,6 +57,8 @@ public class GeraArvore {
 				
 				if(tamanho < largura){
 					noConteiner.getConteiner().setTamanho(largura);
+					noConteiner.getParent().getConteiner().setTamanho(largura);
+					
 				}
 				posicaoVetor = posicaoVetor + 2;
 			}

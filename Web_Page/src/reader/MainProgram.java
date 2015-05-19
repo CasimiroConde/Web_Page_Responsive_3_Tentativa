@@ -7,7 +7,6 @@ import instancia.Solucao;
 
 import java.io.IOException;
 
-import arvoreSolucao.ArvoreSolucao;
 import arvoreSolucao.GeraArvore;
 import arvoreSolucao.Node;
 import montagemEstatica.Montagem;
@@ -40,7 +39,7 @@ public class MainProgram {
 		
 		
 		Solucao solucao = new Solucao(modelo);
-		ArvoreSolucao<Node> arvore = GeraArvore.executa(solucao.getSolucao(), modelo);
+		Node arvore = GeraArvore.executa(solucao.getSolucao(), modelo);
 		
 		String impressao = arvore.toString();
 		

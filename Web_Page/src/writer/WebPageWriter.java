@@ -6,7 +6,6 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import arvoreSolucao.ArvoreSolucao;
 import arvoreSolucao.Node;
 import classes.Modelo;
 
@@ -24,7 +23,7 @@ public class WebPageWriter {
 	 * @param solucao
 	 * @throws IOException
 	 */
-	public static void geraPaginaWeb(ArvoreSolucao<Node> arvore, Modelo modelo) throws IOException{
+	public static void geraPaginaWeb(Node arvore, Modelo modelo) throws IOException{
 	    StringBuilder buffer = new StringBuilder();
 	    
 	    geraCabecalho(buffer);
@@ -41,7 +40,7 @@ public class WebPageWriter {
 	 * @param solucao
 	 * @param buffer
 	 */
-	private static void geraConteudo(ArvoreSolucao<Node> arvore, StringBuilder buffer, Modelo modelo) {
+	private static void geraConteudo(Node arvore, StringBuilder buffer, Modelo modelo) {
 		
 		buffer.append(PrinterPosicionamento.executa(arvore ,modelo));
 
