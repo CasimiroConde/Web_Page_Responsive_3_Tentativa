@@ -26,11 +26,12 @@ public class PrinterPosicionamento
 			 
 			 if(child.getConteiner() != null){
 				String style;
-				 	if(child.getConteiner().getDirecao() == DirecaoConteiner.Horizontal){
-				 		style = "style='float:left;'";
-					 }else{
-						 style = "style='float:left; width:" +child.getConteiner().getTamanho() + "'";
-					 }
+				if(child.contemElemento()){
+					style = "style='float:left; width:" + child.getConteiner().getLargura() + "; heigth:" + child.getConteiner().getAltura() +  "'";		
+				} else {
+					style = "style='float:left;'";	
+				}
+				
 				buffer.append("<div " + style + ">");
 				buffer.append(executa(child, modelo));	
 			 } else{

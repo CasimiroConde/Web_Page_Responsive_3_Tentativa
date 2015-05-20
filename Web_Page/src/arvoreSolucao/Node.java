@@ -26,6 +26,14 @@ public @Data class Node {
 		this.leafs.add(leaf);
 		this.leafs.get(this.leafs.size() - 1).setParent(this);
 	}
+	
+	public boolean contemElemento() {
+		for(Node n: this.getLeafs()){
+			if(n.getElemento() != null)
+				return true;
+			}
+		return false;
+	}
 
 	public void remove() {
 		parent.removeLeaf(this);

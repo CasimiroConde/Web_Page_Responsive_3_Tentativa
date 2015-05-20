@@ -1,4 +1,4 @@
-package instancia;
+package old;
 
 import lombok.Data;
 import classes.Componente;

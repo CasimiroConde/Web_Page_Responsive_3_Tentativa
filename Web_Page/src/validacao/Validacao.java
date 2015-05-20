@@ -1,7 +1,7 @@
 package validacao;
 
+import old.UnidadeSolucao;
 import instancia.Solucao;
-import instancia.UnidadeSolucao;
 import ordenacao.Dependencias;
 import ordenacao.Ordenacao;
 import classes.Modelo;

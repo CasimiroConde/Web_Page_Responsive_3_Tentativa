@@ -9,14 +9,14 @@ C; box menu; 74; 132; 60
 C; slide; 896; 446; 100
 C; slide; 712; 446; 90
 C; slide; 500; 248; 70
-C; feature; 224; 85; 100
+C; feature; 229; 86; 100
 C; feature; 178; 35; 50
 C; feature; 0; 0; 0
 C; newsletter; 896; 51; 100
 C; newsletter; 712; 51; 80
 C; newsletter; 480; 107; 70
 C; newsletter; 320; 122; 60
-C; article; 206; 120; 100
+C; article; 216; 120; 100
 C; article; 160; 140; 100
 C; article; 216; 100; 100
 C; article; 280; 80; 100

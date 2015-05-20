@@ -2,11 +2,11 @@ package reader;
 
 import static org.junit.Assert.assertEquals;
 import hillClimbing.HillClimbing;
-import instancia.DimensoesPosicionamento;
 import instancia.Solucao;
 
 import java.io.IOException;
 
+import arvoreSolucao.DimensoesPosicionamento;
 import arvoreSolucao.GeraArvore;
 import arvoreSolucao.Node;
 import montagemEstatica.Montagem;
