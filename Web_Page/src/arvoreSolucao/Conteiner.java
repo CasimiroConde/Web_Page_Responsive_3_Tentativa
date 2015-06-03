@@ -15,18 +15,4 @@ public @Data class Conteiner {
 		this.largura = 0;
 		this.altura = 0;
 	}
-
-	public void definirDimensoes(int alturaElemento, int larguraElemento) {
-	
-		if(this.direcao.equals(DirecaoConteiner.Horizontal)){
-			this.largura += larguraElemento;
-			if(this.altura < alturaElemento)
-				this.altura = alturaElemento;
-		} else {
-			this.altura += alturaElemento;
-			if(this.largura< larguraElemento)
-				this.largura = larguraElemento;
-		}
-		
-	}
 }

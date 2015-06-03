@@ -16,7 +16,7 @@ C; newsletter; 896; 51; 100
 C; newsletter; 712; 51; 80
 C; newsletter; 480; 107; 70
 C; newsletter; 320; 122; 60
-C; article; 216; 120; 100
+C; article; 216; 380; 100
 C; article; 160; 140; 100
 C; article; 216; 100; 100
 C; article; 280; 80; 100

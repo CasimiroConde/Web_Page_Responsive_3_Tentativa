@@ -2,6 +2,9 @@ package arvoreSolucao;
 
 import java.util.ArrayList;
 
+import classes.Caracteristica;
+import classes.Componente;
+import classes.Modelo;
 import lombok.Data;
 import lombok.Getter;
 
@@ -67,5 +70,72 @@ public @Data class Node {
 		}
 
 		return s;
+	}
+
+	public void definirDimensoes(Modelo modelo) {
+		if(this.getConteiner() != null){
+			definirDimensoesComponente(modelo);	
+		}
+		
+		if(this.parent != null){
+			this.getParent().definirDimensoes(modelo);
+		}
+		
+	}
+
+	private void definirDimensoesComponente(Modelo modelo) {
+		
+		int novaLargura = 0;
+		int novaAltura = 0;
+		for(Node leaf: this.getLeafs()){
+			if(leaf.getConteiner() != null){
+				if(this.getConteiner().getDirecao().equals(DirecaoConteiner.Horizontal)){
+					novaLargura += leaf.getConteiner().getLargura();
+					this.getConteiner().setLargura(novaLargura);
+					
+					if(this.getConteiner().getAltura() < leaf.getConteiner().getAltura())
+						this.getConteiner().setAltura(leaf.getConteiner().getAltura());
+				} else {
+					novaAltura += leaf.getConteiner().getAltura();
+					this.getConteiner().setAltura(novaAltura);
+					
+					if(this.getConteiner().getLargura() < leaf.getConteiner().getLargura())
+						this.getConteiner().setLargura(leaf.getConteiner().getLargura());
+				}
+			}
+			
+			if(leaf.getElemento() != null){
+				if(this.getConteiner().getDirecao().equals(DirecaoConteiner.Horizontal)){
+					int indiceComponente = leaf.getElemento().getIndiceComponente();
+					int indiceCaracteristica = leaf.getElemento().getIndiceCaracteristica();
+					
+					Componente componente = modelo.pegaComponenteIndice(indiceComponente);
+					Caracteristica caracteristica = componente.getConfiguracao().pegaCaracteristicaIndice(indiceCaracteristica);
+					int larguraElemento = Integer.parseInt(caracteristica.getLargura());
+					int alturaElemento = Integer.parseInt(caracteristica.getAltura());
+					
+					novaLargura += larguraElemento;
+					this.getConteiner().setLargura(novaLargura);
+					
+					if(this.getConteiner().getAltura() < alturaElemento)
+						this.getConteiner().setAltura(alturaElemento);
+				} else {
+					int indiceComponente = leaf.getElemento().getIndiceComponente();
+					int indiceCaracteristica = leaf.getElemento().getIndiceCaracteristica();
+					
+					Componente componente = modelo.pegaComponenteIndice(indiceComponente);
+					Caracteristica caracteristica = componente.getConfiguracao().pegaCaracteristicaIndice(indiceCaracteristica);
+					int larguraElemento = Integer.parseInt(caracteristica.getLargura());
+					int alturaElemento = Integer.parseInt(caracteristica.getAltura());
+					
+					
+					novaAltura += alturaElemento;
+					this.getConteiner().setAltura(novaAltura);
+					
+					if(this.getConteiner().getLargura() < larguraElemento)
+						this.getConteiner().setLargura(larguraElemento);
+				}
+			}
+		}
 	}
 }

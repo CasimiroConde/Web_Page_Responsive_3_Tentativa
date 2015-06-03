@@ -113,7 +113,7 @@ public class TestGeraArvore {
 		int tamanho = 0;
 		
 		for(Node no : arvore.getLeafs()){
-			tamanho = no.getConteiner().getTamanho();
+			tamanho = no.getConteiner().getLargura();
 		}
 		
 		assertEquals(100, tamanho);
@@ -133,7 +133,7 @@ public class TestGeraArvore {
 		int tamanho = 0;
 		
 		for(Node no : arvore.getLeafs()){
-			tamanho = no.getConteiner().getTamanho();
+			tamanho = no.getConteiner().getLargura();
 		}
 		
 		assertEquals(200, tamanho);

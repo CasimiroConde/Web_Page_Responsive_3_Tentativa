@@ -27,7 +27,7 @@ public class WebPageWriter {
 	    StringBuilder buffer = new StringBuilder();
 	    
 	    geraCabecalho(buffer);
-	    iniciaBody(buffer);
+	    iniciaBody(buffer, arvore);
 	    geraConteudo(arvore, buffer, modelo);
 	    encerraBody(buffer);
 	    encerraArquivo(buffer);
@@ -106,8 +106,8 @@ public class WebPageWriter {
 	 * Inicia a tag <body>
 	 * @param buffer
 	 */
-	private static void iniciaBody(StringBuilder buffer) {
-		buffer.append("<body>");
+	private static void iniciaBody(StringBuilder buffer, Node arvore) {
+		buffer.append("<body style='float:left; width:" + arvore.getConteiner().getLargura() + "; heigth:" + arvore.getConteiner().getAltura() +  "'>");
 	}
 
 	/**

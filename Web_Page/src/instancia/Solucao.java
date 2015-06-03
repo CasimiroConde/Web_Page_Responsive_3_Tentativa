@@ -1,5 +1,7 @@
 package instancia;
 
+import arvoreSolucao.GeraArvore;
+import arvoreSolucao.Node;
 import old.MatrizPosicionamento;
 import lombok.Data;
 import validacao.Validacao;
@@ -19,71 +21,115 @@ public @Data class Solucao{
 	private Modelo modelo;
 	private String[] nomesFontes;
 	private String solucao;
+	private Node arvore;
 	
 	/**
 	 * Construtor de uma Solução  
 	 */
 	public Solucao(Modelo modelo){
-		this.modelo = modelo;
-//		this.solucao = new UnidadeSolucao[0];	
+		this.modelo = modelo;	
 		this.solucao = new String();
-
-			this.solucao = "c,v,c,h,c,v,0,0,1,0,S,c,h,2,0,S,S,c,h,c,h,12,0,S,c,h,3,0,4,0,5,0,6,0,S,S,c,h,c,v,13,0,S,c,h,c,h,7,0,S,c,h,8,0,9,0,10,0,11,0,S,S,S,c,h,14,0,S,S";
+		this.solucao = "c,v,c,h,c,v,0,0,1,0,S,c,h,2,0,S,S,c,h,c,h,12,0,S,c,h,3,0,4,0,5,0,6,0,S,S,c,h,c,v,13,0,S,c,v,c,h,7,0,S,c,h,8,0,9,0,10,0,11,0,S,S,S,c,h,14,0,S,S";
 		
+		this.arvore = GeraArvore.executa(this.solucao, modelo);	
+			
 	}
 	
-	/** 
-	 * @return quantidade de Unidades de Solução contidas na Solução.
-	 */
-	public int tamanhoSolucao(){
-		return this.getSolucao().length();
-	}
 	
 	/**
 	 * @return Altura máxima da solução
 	 * Somando a altura de todas Unidades de Solução como se estivessem uma embaixo da outra.
 	 */
-	/*public int calculaAlturaMaximaSolucao(){
+	public int calculaAlturaMaximaSolucao(){
 		int alturaTotal = 0;
-		for(int i = 0 ; i < this.tamanhoSolucao() ; i++ ){
-			alturaTotal += this.pegaUnidadeSolucaoIndice(i).pegaAlturaComponente();
+		alturaTotal = calculaAlturaMaximaRamo(alturaTotal, this.arvore);	
+		return alturaTotal;
+		
+	}
+
+
+	private int calculaAlturaMaximaRamo(int alturaTotal, Node arvore) {
+		for(Node leaf: arvore.getLeafs()){
+			if(leaf.getElemento() != null){
+				int indiceComponente = leaf.getElemento().getIndiceComponente();
+				int IndiceCaracteristica = leaf.getElemento().getIndiceCaracteristica();
+				alturaTotal += Integer.parseInt(this.modelo.pegaComponenteIndice(indiceComponente).getConfiguracao().pegaCaracteristicaIndice(IndiceCaracteristica).getAltura());
+			}else{
+				alturaTotal = calculaAlturaMaximaRamo(alturaTotal, leaf);
+			}
 		}
 		return alturaTotal;
 	}
 	
-	*//**
-	 * @return Altura real da solução.
+	/**
+	 * @return Largura máxima da solução
+	 * Somando a largura de todas Unidades de Solução como se estivessem uma embaixo da outra.
+	 */
+	public int calculaLarguraMaximaSolucao(){
+		int larguraTotal = 0;
+		larguraTotal = calculaLarguraMaximaRamo(larguraTotal, this.arvore);	
+		return larguraTotal;
+		
+	}
+
+
+	private int calculaLarguraMaximaRamo(int larguraTotal, Node arvore) {
+		for(Node leaf: arvore.getLeafs()){
+			if(leaf.getElemento() != null){
+				int indiceComponente = leaf.getElemento().getIndiceComponente();
+				int IndiceCaracteristica = leaf.getElemento().getIndiceCaracteristica();
+				larguraTotal += Integer.parseInt(this.modelo.pegaComponenteIndice(indiceComponente).getConfiguracao().pegaCaracteristicaIndice(IndiceCaracteristica).getLargura());
+			}else{
+				larguraTotal = calculaLarguraMaximaRamo(larguraTotal, leaf);
+			}
+		}
+		return larguraTotal;
+	}
+	
+	
+	 /** @return Altura real da solução.
 	 * Considerando Unidades de Solução na mesma linha.
-	 *//*
+	 */
 	public int calculaAlturaRealSolucao(){
-		return DimensoesPosicionamento.executaAltura(this, modelo);
+		return this.arvore.getConteiner().getAltura();
 	}
 	
-	*//** 
-	 * @return Largura da Solução.
-	 * Ou seja, o tamanhao da maior linha.
-	 *//*
+	/** 
+	 @return Largura da Solução.
+	 Ou seja, o tamanhao da maior linha.
+	*/
 	public Integer calculaLarguraRealSolucao(){
-		return DimensoesPosicionamento.executaLargura(this, modelo);
+		return this.arvore.getConteiner().getLargura();
 	}
 	
-	*//**
+	/**
 	 * @return Coeficiente de Informação da Solução.
-	 *//*
+	 */
 	public double calculaCoeficienteSolucao(){
 		return this.calculaSomaCoeficiente() / this.modelo.pegaNumeroComponentes();	
-	}*/
+	}
 
 	/**
 	 * @return Soma dos Coeficientes de Informação das Unidades de Solução.
 	 */
-	/*private double calculaSomaCoeficiente() {
+	private double calculaSomaCoeficiente() {
 		double coeficienteTotal = 0.0;
-		for(int i = 0 ; i < this.tamanhoSolucao() ; i++ ){
-			coeficienteTotal += this.pegaUnidadeSolucaoIndice(i).pegaCoeficienteComponente(modelo.pegaComponenteIndice(i));
+		coeficienteTotal = calculaCoeficienteMaximaRamo(coeficienteTotal, this.arvore);	
+		return coeficienteTotal;
+	}
+	
+	private double calculaCoeficienteMaximaRamo(double coeficienteTotal, Node arvore) {
+		for(Node leaf: arvore.getLeafs()){
+			if(leaf.getElemento() != null){
+				int indiceComponente = leaf.getElemento().getIndiceComponente();
+				int IndiceCaracteristica = leaf.getElemento().getIndiceCaracteristica();
+				coeficienteTotal += this.modelo.pegaComponenteIndice(indiceComponente).getConfiguracao().pegaCaracteristicaIndice(IndiceCaracteristica).getCoeficienteInformacao();
+			}else{
+				coeficienteTotal = calculaCoeficienteMaximaRamo(coeficienteTotal, leaf);
+			}
 		}
 		return coeficienteTotal;
-	}*/
+	}
 	
 	/**
 	 * Verifica se a Solução é válida, considerando os testes feitos pela Classe de Validação.
@@ -97,32 +143,30 @@ public @Data class Solucao{
 	/**
 	 * @return fitness function da solução.
 	 */
-	/*public double fitnessFunction(){
+	public double fitnessFunction(){
 		return FATOR * this.calculaFatorVertical() + (1 - FATOR) * (1 - this.calculaCoeficienteSolucao());
-	}*/
+	}
 	
 	/**
 	 * @return Fator Vertival.
 	 * Utilizado para calcular a fitness function.
 	 */
-/*	public double calculaFatorVertical(){
+	public double calculaFatorVertical(){
 		return this.calculaAlturaRealSolucao() / this.calculaAlturaMaximaSolucao();
 	}
 	
-	*//**
+	/**
 	 * Imprime as informações completas de uma solução. 
-	 *//*
+	 */
 	public void print(){
-		for(UnidadeSolucao u : this.solucao){
-			u.print();
-		}
+
 		System.out.println("Altura Máxima: " + this.calculaAlturaMaximaSolucao());
 		System.out.println("Altura Total: " + this.calculaAlturaRealSolucao());
 		System.out.println("Media Coeficiente de Informação: " + this.calculaCoeficienteSolucao());
 		System.out.println("Fitness Function: " + this.fitnessFunction());
 		System.out.println("Largura Solução: " + this.calculaLarguraRealSolucao());
 		System.out.println("Largura Tela: " + LARGURATELA);
-	}*/
+	}
 	
 
 		public Solucao copy() {

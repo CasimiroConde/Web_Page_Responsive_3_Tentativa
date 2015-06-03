@@ -53,7 +53,7 @@ public class GeraArvore {
 				int larguraElemento = Integer.parseInt(caracteristica.getLargura());
 				int alturaElemento = Integer.parseInt(caracteristica.getAltura());
 				
-				noConteiner.getConteiner().definirDimensoes(alturaElemento, larguraElemento);
+				noConteiner.definirDimensoes(modelo);
 				
 				posicaoVetor = posicaoVetor + 2;
 			}

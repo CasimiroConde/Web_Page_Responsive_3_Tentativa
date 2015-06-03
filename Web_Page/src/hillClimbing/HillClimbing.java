@@ -11,7 +11,7 @@ public @Data class HillClimbing {
 	private int totalNOK = 0;
 	private int totalOK = 0;
 
-	public void executa(Modelo modelo) {
+	/*public void executa(Modelo modelo) {
 		this.solucao = new Solucao(modelo);
 		Solucao solucaoTeste = solucao.copy();
 		
@@ -37,39 +37,4 @@ public @Data class HillClimbing {
 		solucao.print();
 		//WebPageWriter.geraPaginaWeb(solucao);
 	}
-
-	private boolean testeVizinho(int numeroComponente, Solucao solucaoTeste) {
-		//Como retornar assim que encontrar a primeira combinação melhor?
-		//Sobe uma Linha
-		solucaoTeste.vizinhoSobeLinha(numeroComponente);
-
-		if(solucaoTeste.fitnessFunction() < solucao.fitnessFunction())
-			return true;
-		
-		//Desde uma Linha
-		solucaoTeste.vizinhoDesceLinha(numeroComponente);
-
-		if(solucaoTeste.fitnessFunction() < solucao.fitnessFunction())
-			return true;
-		
-		//esquerda
-		solucaoTeste.vizinhoColocaEsquerda(numeroComponente);
-
-		if(solucaoTeste.fitnessFunction() < solucao.fitnessFunction())
-			return true;
-
-		//Direita
-		solucaoTeste.vizinhoColocaDireita(numeroComponente);
-
-		if(solucaoTeste.fitnessFunction() < solucao.fitnessFunction())
-			return true;	
-
-		//Busca comfiguracao semelhante
-		//solucaoTeste.vizinhoBuscaConfiguracao(numeroComponente);
-
-		if(solucaoTeste.fitnessFunction() < solucao.fitnessFunction())
-			return true;
-		
-		return false;
-	}
-}
+*/}

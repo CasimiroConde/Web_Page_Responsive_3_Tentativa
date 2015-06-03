@@ -15,7 +15,7 @@ public class PrinterPosicionamento
 		//  buffer.append("<div " + "style='float:left; width:" + arvore.getConteiner().getTamanho() + "'" + ">");
 		  
 		  executaFolhas(arvore, modelo, buffer);
-		//  buffer.append("</div>");
+		// buffer.append("</div>");
 		  return buffer;
 	  }
 
@@ -26,11 +26,11 @@ public class PrinterPosicionamento
 			 
 			 if(child.getConteiner() != null){
 				String style;
-				if(child.contemElemento()){
+				//if(child.getConteiner().getDirecao().equals(DirecaoConteiner.Horizontal)){
 					style = "style='float:left; width:" + child.getConteiner().getLargura() + "; heigth:" + child.getConteiner().getAltura() +  "'";		
-				} else {
-					style = "style='float:left;'";	
-				}
+				//} else {0
+					//style = "style='width:" + child.getConteiner().getLargura() + "; heigth:" + child.getConteiner().getAltura() +  "'";			
+				//}
 				
 				buffer.append("<div " + style + ">");
 				buffer.append(executa(child, modelo));	

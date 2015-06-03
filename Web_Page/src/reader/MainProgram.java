@@ -6,10 +6,9 @@ import instancia.Solucao;
 
 import java.io.IOException;
 
-import arvoreSolucao.DimensoesPosicionamento;
+import old.Montagem;
 import arvoreSolucao.GeraArvore;
 import arvoreSolucao.Node;
-import montagemEstatica.Montagem;
 import writer.WebPageWriter;
 import classes.Modelo;
 
@@ -46,8 +45,8 @@ public class MainProgram {
 		System.out.println(impressao);
 		
 		WebPageWriter.geraPaginaWeb(arvore, modelo);
-
 		
+		solucao.print();
 		
 		
 		System.out.println("FIM");

@@ -1,11 +1,11 @@
-package montagemEstatica;
+package old;
 
 import classes.Modelo;
 import instancia.Solucao;
 
 public class Montagem {
 	
-	public static Solucao montagemUm(Modelo modelo){
+/*	public static Solucao montagemUm(Modelo modelo){
 		
 		Solucao solucao = new Solucao(modelo);
 		
@@ -89,5 +89,5 @@ public class Montagem {
 		
 		
 	}
-	
+*/	
 }
