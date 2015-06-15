@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import classes.Caracteristica;
 import classes.Componente;
 import classes.Modelo;
+import enums.Direcao;
 import lombok.Data;
-import lombok.Getter;
 
 public @Data class Node {
 
@@ -82,6 +82,15 @@ public @Data class Node {
 		}
 		
 	}
+	
+	public boolean podeTerElemento(){
+		for(Node no : this.getLeafs()){
+			if(no.getConteiner() != null){
+				return false;
+			}
+		}
+		return true;
+	}
 
 	private void definirDimensoesComponente(Modelo modelo) {
 		
@@ -138,4 +147,49 @@ public @Data class Node {
 			}
 		}
 	}
+	
+	public Node pegaNoIndice(int indice){
+		for(Node no : this.getLeafs()){
+			if(no.getConteiner() != null){
+				if(no.getConteiner().getIndice() == indice)
+					return no;
+			}
+			if(no.getElemento() != null){
+				if(no.getElemento().getIndiceComponente() == indice)
+					return no;
+			}
+			
+			no.pegaNoIndice(indice);
+		}
+		return null;
+	}
+
+	public Node indicaNovoConteiner(Direcao direcao) {
+		int indiceConteiner = this.getParent().getConteiner().getIndice();
+		Node arvoreOrigem = this.getParent();
+		
+		while(arvoreOrigem.getParent() != null){
+			arvoreOrigem = arvoreOrigem.getParent();
+		}
+		
+		Node novoConteiner = this.getParent();
+		while(novoConteiner.equals(this.getParent()) || arvoreOrigem.pegaNoIndice(indiceConteiner) != null){
+			if(direcao.equals(Direcao.LEFT)){
+				Node possivelConteiner = arvoreOrigem.pegaNoIndice(indiceConteiner);
+				if(possivelConteiner.podeTerElemento())
+					novoConteiner = possivelConteiner;
+				indiceConteiner--;
+			}
+			
+			if(direcao.equals(Direcao.RIGHT)){
+				Node possivelConteiner = arvoreOrigem.pegaNoIndice(indiceConteiner);
+				if(possivelConteiner.podeTerElemento())
+					novoConteiner = possivelConteiner;
+				indiceConteiner++;
+			}		
+		}
+
+		return novoConteiner;
+	}
+	
 }

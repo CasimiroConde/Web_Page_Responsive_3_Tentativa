@@ -47,11 +47,6 @@ public class GeraArvore {
 				
 				Node noConteiner = pilhaConteiners.peek();
 				noConteiner.addLeaf(no);
-
-				Componente componente = modelo.pegaComponenteIndice(indiceComponente);
-				Caracteristica caracteristica = componente.getConfiguracao().pegaCaracteristicaIndice(indiceCaracteristica);
-				int larguraElemento = Integer.parseInt(caracteristica.getLargura());
-				int alturaElemento = Integer.parseInt(caracteristica.getAltura());
 				
 				noConteiner.definirDimensoes(modelo);
 				
